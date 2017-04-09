@@ -13,7 +13,16 @@ public class Computer extends ShoppingItem {
     public double weight;
     public String os;
     public String picture;
-    
+    public int quantity;
+
+    public int getQuantity() {
+        return quantity;
+    }
+
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
+    }
+
     public String getName() {
         return name;
     }
@@ -102,7 +111,7 @@ public class Computer extends ShoppingItem {
         this.picture = picture;
     }
 
-    public Computer(String name, double price, String cpu, String gpu, String psu, String ram, String hdd, String motherBoard, double weight, String os, String picture) {
+    public Computer(String name, double price, String cpu, String gpu, String psu, String ram, String hdd, String motherBoard, double weight, String os, String picture, int quantity) {
         this.name = name;
         this.price = price;
         this.cpu = cpu;
@@ -114,6 +123,7 @@ public class Computer extends ShoppingItem {
         this.weight = weight;
         this.os = os;
         this.picture = picture;
+        this.quantity = quantity;
     }
 
 
