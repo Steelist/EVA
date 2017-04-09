@@ -4,25 +4,16 @@ package fi.tamk.tiko;
 public class Computer extends ShoppingItem {
     public String name;
     public double price;
-    public CPU cpu;
-    public GPU gpu;
-    public PSU psu;
-
-    public PSU getPsu() {
-        return psu;
-    }
-
-    public void setPsu(PSU psu) {
-        this.psu = psu;
-    }
-
-    public RAM ram;
-    public HDD hdd;
-    public MotherBoard motherBoard;
+    public String cpu;
+    public String gpu;
+    public String psu;
+    public String ram;
+    public String hdd;
+    public String motherBoard;
     public double weight;
-    public OS os;
+    public String os;
     public String picture;
-
+    
     public String getName() {
         return name;
     }
@@ -39,43 +30,51 @@ public class Computer extends ShoppingItem {
         this.price = price;
     }
 
-    public CPU getCpu() {
+    public String getCpu() {
         return cpu;
     }
 
-    public void setCpu(CPU cpu) {
+    public void setCpu(String cpu) {
         this.cpu = cpu;
     }
 
-    public GPU getGpu() {
+    public String getGpu() {
         return gpu;
     }
 
-    public void setGpu(GPU gpu) {
+    public void setGpu(String gpu) {
         this.gpu = gpu;
     }
 
-    public RAM getRam() {
+    public String getPsu() {
+        return psu;
+    }
+
+    public void setPsu(String psu) {
+        this.psu = psu;
+    }
+
+    public String getRam() {
         return ram;
     }
 
-    public void setRam(RAM ram) {
+    public void setRam(String ram) {
         this.ram = ram;
     }
 
-    public HDD getHdd() {
+    public String getHdd() {
         return hdd;
     }
 
-    public void setHdd(HDD hdd) {
+    public void setHdd(String hdd) {
         this.hdd = hdd;
     }
 
-    public MotherBoard getMotherBoard() {
+    public String getMotherBoard() {
         return motherBoard;
     }
 
-    public void setMotherBoard(MotherBoard motherBoard) {
+    public void setMotherBoard(String motherBoard) {
         this.motherBoard = motherBoard;
     }
 
@@ -87,15 +86,23 @@ public class Computer extends ShoppingItem {
         this.weight = weight;
     }
 
-    public OS getOs() {
+    public String getOs() {
         return os;
     }
 
-    public void setOs(OS os) {
+    public void setOs(String os) {
         this.os = os;
     }
 
-    public Computer(String name, double price, CPU cpu, GPU gpu, PSU psu, RAM ram, HDD hdd, MotherBoard motherBoard, double weight, OS os, String picture) {
+    public String getPicture() {
+        return picture;
+    }
+
+    public void setPicture(String picture) {
+        this.picture = picture;
+    }
+
+    public Computer(String name, double price, String cpu, String gpu, String psu, String ram, String hdd, String motherBoard, double weight, String os, String picture) {
         this.name = name;
         this.price = price;
         this.cpu = cpu;
@@ -109,13 +116,7 @@ public class Computer extends ShoppingItem {
         this.picture = picture;
     }
 
-    public String getPicture() {
-        return picture;
-    }
 
-    public void setPicture(String picture) {
-        this.picture = picture;
-    }
 
 
     public Computer() {
