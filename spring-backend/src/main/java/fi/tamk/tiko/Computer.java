@@ -1,5 +1,7 @@
 package fi.tamk.tiko;
 
+import javax.persistence.Entity;
+
 @Entity
 public class Computer extends ShoppingItem {
     public String name;

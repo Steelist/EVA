@@ -25,7 +25,12 @@ public class MyController {
 	
 	// curl -H "Content-type: application/json" -X POST -d '{some json here...}' http://localhost:8080/items
     @RequestMapping(value = "/items",  method=RequestMethod.POST)
-    public void saveLocation(@RequestBody ShoppingItem c) {
+    public void saveItem(@RequestBody ShoppingItem c) {
+        database.save(c);
+    }
+
+    @RequestMapping(value = "/computer",  method=RequestMethod.POST)
+    public void saveComputer(@RequestBody Computer c) {
         database.save(c);
     }
 	
