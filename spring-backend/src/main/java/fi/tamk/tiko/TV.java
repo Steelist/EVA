@@ -32,6 +32,22 @@ public class TV extends ShoppingItem {
         this.picture = picture;
     }
 
+    @java.lang.Override
+    public java.lang.String toString() {
+        return "TV{" +
+                "name='" + name + '\'' +
+                ", price=" + price +
+                ", resolution='" + resolution + '\'' +
+                ", refreshRate=" + refreshRate +
+                ", size='" + size + '\'' +
+                ", type='" + type + '\'' +
+                ", aspectRatio='" + aspectRatio + '\'' +
+                ", connections='" + connections + '\'' +
+                ", weight=" + weight +
+                ", picture='" + picture + '\'' +
+                '}';
+    }
+
     public String getName() {
         return name;
     }
