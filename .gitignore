@@ -1,0 +1,5 @@
+*.class
+*.class
+*.class
+spring-backend/target/classes/fi/tamk/tiko/ShoppingItem.class
+*.class
