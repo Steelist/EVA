@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import java.util.ArrayList;
@@ -31,6 +32,12 @@ public class MyController {
 
     @RequestMapping(value = "/computer",  method=RequestMethod.POST)
     public void saveComputer(@RequestBody Computer c) {
+        database.save(c);
+    }
+
+    @CrossOrigin(origins = "*")
+    @RequestMapping(value = "/tv",  method=RequestMethod.POST, headers = {"content-type=application/json"})
+    public void saveTV(@RequestBody TV c) {
         database.save(c);
     }
 	
