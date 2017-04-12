@@ -1,5 +1,6 @@
 package fi.tamk.tiko;
 
+import java.text.DecimalFormat;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 
@@ -83,6 +84,8 @@ public class Screen extends ShoppingItem {
     }
 
     public double getPrice() {
+      
+       
         return price;
     }
 
