@@ -28,6 +28,14 @@ public class MyController {
 
     }
 
+    public void fillWithTestdata(){
+        database.save(new TV("asd",200,"asd",2,"asd","asd","asd","asd",20,"asd"));
+        database.save(new TV("asd",200,"asd",2,"asd","asd","asd","asd",20,"asd"));
+        database.save(new TV("asd",200,"asd",2,"asd","asd","asd","asd",20,"asd"));
+        database.save(new TV("asd",200,"asd",2,"asd","asd","asd","asd",20,"asd"));
+        database.save(new TV("asd",200,"asd",2,"asd","asd","asd","asd",20,"asd"));
+    }
+
     @RequestMapping({"/","/home"})
     public String showHomePage(Map<String, Object> model) {
         return "/index.html";
@@ -62,7 +70,7 @@ public class MyController {
     @CrossOrigin(origins = "*")
 	@RequestMapping(value = "/items",  method=RequestMethod.GET)
     public Iterable<ShoppingItem> fetchLocation() {
-         database.save(new TV("asd",200,"asd",2,"asd","asd","asd","asd",20,"asd"));
+
         return database.findAll();
     }
 
