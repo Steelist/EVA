@@ -29,11 +29,11 @@ public class MyController {
     }
 
     public void fillWithTestdata(){
-        database.save(new TV("asd",200,"asd",2,"asd","asd","asd","asd",20,"asd"));
-        database.save(new TV("asd",200,"asd",2,"asd","asd","asd","asd",20,"asd"));
-        database.save(new TV("asd",200,"asd",2,"asd","asd","asd","asd",20,"asd"));
-        database.save(new TV("asd",200,"asd",2,"asd","asd","asd","asd",20,"asd"));
-        database.save(new TV("asd",200,"asd",2,"asd","asd","asd","asd",20,"asd"));
+        database.save(new TV("LG",700,"asd",2,"asd","asd","asd","asd",25,"http://www.novelupdates.com/img/noimagefound.jpg"));
+        database.save(new TV("Sony",800,"asd",2,"asd","asd","asd","asd",20,"http://www.novelupdates.com/img/noimagefound.jpg"));
+        database.save(new TV("Philips",500,"asd",2,"asd","asd","asd","asd",30,"http://www.novelupdates.com/img/noimagefound.jpg"));
+        database.save(new TV("Samsung",850,"asd",2,"asd","asd","asd","asd",25,"http://www.novelupdates.com/img/noimagefound.jpg"));
+        database.save(new TV("Toshiba",750,"asd",2,"asd","asd","asd","asd",15,"http://www.novelupdates.com/img/noimagefound.jpg"));
     }
 
     @RequestMapping({"/","/home"})
