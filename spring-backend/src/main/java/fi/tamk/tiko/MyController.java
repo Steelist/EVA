@@ -34,6 +34,15 @@ public class MyController {
         database.save(new TV("Philips",500,"asd",2,"asd","asd","asd","asd",30,"http://www.novelupdates.com/img/noimagefound.jpg"));
         database.save(new TV("Samsung",850,"asd",2,"asd","asd","asd","asd",25,"http://www.novelupdates.com/img/noimagefound.jpg"));
         database.save(new TV("Toshiba",750,"asd",2,"asd","asd","asd","asd",15,"http://www.novelupdates.com/img/noimagefound.jpg"));
+        System.out.println("Url path GET \"localhost:8080/items\" shows all items currently in database");
+        System.out.println("Url path GET \"localhost:8080/items/{itemId}\" shows specific item with matching id in database");
+        System.out.println("Url path GET \"localhost:8080/index.html\" shows homepage where all items are shown");
+        System.out.println("Url path GET \"localhost:8080/addComputer.html\" shows form that with a new computer can be added");
+        System.out.println("Url path GET \"localhost:8080/addTV.html\" shows form that with a new TV can be added");
+        System.out.println("Url path GET \"localhost:8080/addScreen.html\" shows form that with a new screen can be added");
+        System.out.println("Url path POST \"localhost:8080/computer\" adds new computer with given json data");
+        System.out.println("Url path POST \"localhost:8080/tv\" adds new TV with given json data");
+        System.out.println("Url path POST \"localhost:8080/screen\" adds new screen with given json data");
     }
 
     @RequestMapping({"/","/home"})
@@ -75,12 +84,12 @@ public class MyController {
     }
 
     @CrossOrigin(origins = "*")
-	@RequestMapping(value = "/items/{itemId}",  method=RequestMethod.GET)
+    @RequestMapping(value = "/items/{itemId}",  method=RequestMethod.GET)
     public ShoppingItem fetchItem(@PathVariable long itemId) {
-        
-        
+
         return database.findOne(itemId);
     }
+
     @CrossOrigin(origins = "*")
     @RequestMapping(value = "/item/{itemId}",  method=RequestMethod.GET)
     public void updateItem(@PathVariable long itemId) {
@@ -88,6 +97,7 @@ public class MyController {
         database.updateTitle(itemId, 400.00);
        
     }
+
 	// When HTTP GET, POST, PUT or OTHER request happens
     // to http://localhost:8080/helloworld
     // invoke this method
