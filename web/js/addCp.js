@@ -65,7 +65,7 @@ console.log(JSON.stringify(data).length);
           <input type="text" name="os" defaultValue="Windows 10 pro"/>
           <br/>
           Picture:<br/>
-          <input type="text" name="picture" defaultValue="http://pic-url-here.jpg"/>
+          <input type="text" name="picture" defaultValue="https://images.jimms.fi/product/6/4/153965-b339765_300x300.jpg"/>
           <br/>
           Quantity:<br/>
           <input type="number" name="quantity" defaultValue="10"/>

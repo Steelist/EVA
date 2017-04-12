@@ -62,7 +62,7 @@ console.log(JSON.stringify(data).length);
           <input type="number" name="weight" defaultValue="15.65"/>
           <br/>
           Picture:<br/>
-          <input type="text" name="picture" defaultValue="http://pic-url-here.jpg"/>
+          <input type="text" name="picture" defaultValue="https://images.jimms.fi/product/1/4/141015-p174303.jpg"/>
           <br/>
         <input type="submit" value="Submit" />
       </form>

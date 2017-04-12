@@ -23,8 +23,8 @@ public class MyController {
     
 	public MyController() {
     }
-	
 	// curl -H "Content-type: application/json" -X POST -d '{some json here...}' http://localhost:8080/items
+    @CrossOrigin(origins = "*")
     @RequestMapping(value = "/items",  method=RequestMethod.POST)
     public void saveItem(@RequestBody ShoppingItem c) {
         database.save(c);
@@ -47,12 +47,14 @@ public class MyController {
     public void saveScreen(@RequestBody Screen c) {
         database.save(c);
     }
-	
+
+    @CrossOrigin(origins = "*")
 	@RequestMapping(value = "/items",  method=RequestMethod.GET)
     public Iterable<ShoppingItem> fetchLocation() {
         return database.findAll();
     }
-	
+
+    @CrossOrigin(origins = "*")
 	@RequestMapping(value = "/items/{itemId}",  method=RequestMethod.GET)
     public ShoppingItem fetchLocation(@PathVariable long itemId) {
         for(ShoppingItem c : database.findAll()) {
