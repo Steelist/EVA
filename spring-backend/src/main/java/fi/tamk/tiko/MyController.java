@@ -28,6 +28,14 @@ public class MyController {
 
     }
 
+    public void fillWithTestdata(){
+        database.save(new TV("asd",200,"asd",2,"asd","asd","asd","asd",20,"asd"));
+        database.save(new TV("asd",200,"asd",2,"asd","asd","asd","asd",20,"asd"));
+        database.save(new TV("asd",200,"asd",2,"asd","asd","asd","asd",20,"asd"));
+        database.save(new TV("asd",200,"asd",2,"asd","asd","asd","asd",20,"asd"));
+        database.save(new TV("asd",200,"asd",2,"asd","asd","asd","asd",20,"asd"));
+    }
+
     @RequestMapping({"/","/home"})
     public String showHomePage(Map<String, Object> model) {
         return "/index.html";
@@ -62,15 +70,23 @@ public class MyController {
     @CrossOrigin(origins = "*")
 	@RequestMapping(value = "/items",  method=RequestMethod.GET)
     public Iterable<ShoppingItem> fetchLocation() {
-         database.save(new TV("asd",200,"asd",2,"asd","asd","asd","asd",20,"asd"));
+
         return database.findAll();
     }
 
     @CrossOrigin(origins = "*")
 	@RequestMapping(value = "/items/{itemId}",  method=RequestMethod.GET)
     public ShoppingItem fetchItem(@PathVariable long itemId) {
-       
+        
+        
         return database.findOne(itemId);
+    }
+    @CrossOrigin(origins = "*")
+    @RequestMapping(value = "/item/{itemId}",  method=RequestMethod.GET)
+    public void updateItem(@PathVariable long itemId) {
+        
+        database.updateTitle(itemId, 400.00);
+       
     }
 	// When HTTP GET, POST, PUT or OTHER request happens
     // to http://localhost:8080/helloworld
