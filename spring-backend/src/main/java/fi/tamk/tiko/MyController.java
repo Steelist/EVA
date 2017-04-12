@@ -13,6 +13,8 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
+
 
 // This class acts as a controller.
 // Usually when using @Controller, you will use also @RequestMapping
@@ -20,10 +22,18 @@ import java.util.List;
 public class MyController {
     @Autowired
     ShoppingItemRepository database;
-    
+
+
     public MyController() {
-       
+
     }
+
+    @RequestMapping({"/","/home"})
+    public String showHomePage(Map<String, Object> model) {
+        return "/index.html";
+    }
+
+
 	// curl -H "Content-type: application/json" -X POST -d '{some json here...}' http://localhost:8080/items
     @CrossOrigin(origins = "*")
     @RequestMapping(value = "/items",  method=RequestMethod.POST)
@@ -58,13 +68,9 @@ public class MyController {
 
     @CrossOrigin(origins = "*")
 	@RequestMapping(value = "/items/{itemId}",  method=RequestMethod.GET)
-    public ShoppingItem fetchLocation(@PathVariable long itemId) {
-        for(ShoppingItem c : database.findAll()) {
-            if(c.getId() == itemId) {
-                return c;
-            }
-        }
-        return null;
+    public ShoppingItem fetchItem(@PathVariable long itemId) {
+       
+        return database.findOne(itemId);
     }
 	// When HTTP GET, POST, PUT or OTHER request happens
     // to http://localhost:8080/helloworld
