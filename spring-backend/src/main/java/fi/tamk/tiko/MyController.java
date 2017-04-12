@@ -34,9 +34,15 @@ public class MyController {
         database.save(new TV("asd",200,"asd",2,"asd","asd","asd","asd",20,"asd"));
         database.save(new TV("asd",200,"asd",2,"asd","asd","asd","asd",20,"asd"));
         database.save(new TV("asd",200,"asd",2,"asd","asd","asd","asd",20,"asd"));
-        System.out.println("Url path \"localhost:8080/items\" shows all items currently in database");
-        System.out.println("Url path \"localhost:8080/items/{itemId}\" shows specific item with matching id in database");
-        System.out.println("Url path \"localhost:8080/index.html\" shows homepage where all items are shown");
+        System.out.println("Url path GET \"localhost:8080/items\" shows all items currently in database");
+        System.out.println("Url path GET \"localhost:8080/items/{itemId}\" shows specific item with matching id in database");
+        System.out.println("Url path GET \"localhost:8080/index.html\" shows homepage where all items are shown");
+        System.out.println("Url path GET \"localhost:8080/addComputer.html\" shows form that with a new computer can be added");
+        System.out.println("Url path GET \"localhost:8080/addTV.html\" shows form that with a new TV can be added");
+        System.out.println("Url path GET \"localhost:8080/addScreen.html\" shows form that with a new screen can be added");
+        System.out.println("Url path POST \"localhost:8080/computer\" adds new computer with given json data");
+        System.out.println("Url path POST \"localhost:8080/tv\" adds new TV with given json data");
+        System.out.println("Url path POST \"localhost:8080/screen\" adds new screen with given json data");
     }
 
     @RequestMapping({"/","/home"})
