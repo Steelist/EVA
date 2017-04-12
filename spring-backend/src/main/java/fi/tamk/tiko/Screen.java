@@ -1,5 +1,6 @@
 package fi.tamk.tiko;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 
 @Entity

@@ -78,10 +78,18 @@ public class MyController {
     }
 
     @CrossOrigin(origins = "*")
-	@RequestMapping(value = "/items/{itemId}",  method=RequestMethod.GET)
+    @RequestMapping(value = "/items/{itemId}",  method=RequestMethod.GET)
     public ShoppingItem fetchItem(@PathVariable long itemId) {
 
         return database.findOne(itemId);
+    }
+
+    @CrossOrigin(origins = "*")
+    @RequestMapping(value = "/item/{itemId}",  method=RequestMethod.GET)
+    public void updateItem(@PathVariable long itemId) {
+        
+        database.updateTitle(itemId, 400.00);
+       
     }
 
 	// When HTTP GET, POST, PUT or OTHER request happens
