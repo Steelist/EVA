@@ -21,7 +21,8 @@ public class MyController {
     @Autowired
     ShoppingItemRepository database;
     
-	public MyController() {
+    public MyController() {
+       
     }
 	// curl -H "Content-type: application/json" -X POST -d '{some json here...}' http://localhost:8080/items
     @CrossOrigin(origins = "*")
@@ -51,6 +52,7 @@ public class MyController {
     @CrossOrigin(origins = "*")
 	@RequestMapping(value = "/items",  method=RequestMethod.GET)
     public Iterable<ShoppingItem> fetchLocation() {
+         database.save(new TV("asd",200,"asd",2,"asd","asd","asd","asd",20,"asd"));
         return database.findAll();
     }
 
