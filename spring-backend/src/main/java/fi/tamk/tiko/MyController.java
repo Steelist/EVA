@@ -68,13 +68,9 @@ public class MyController {
 
     @CrossOrigin(origins = "*")
 	@RequestMapping(value = "/items/{itemId}",  method=RequestMethod.GET)
-    public ShoppingItem fetchLocation(@PathVariable long itemId) {
-        for(ShoppingItem c : database.findAll()) {
-            if(c.getId() == itemId) {
-                return c;
-            }
-        }
-        return null;
+    public ShoppingItem fetchItem(@PathVariable long itemId) {
+       
+        return database.findOne(itemId);
     }
 	// When HTTP GET, POST, PUT or OTHER request happens
     // to http://localhost:8080/helloworld
