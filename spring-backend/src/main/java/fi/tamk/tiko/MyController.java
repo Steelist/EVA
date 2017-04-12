@@ -30,7 +30,8 @@ public class MyController {
         database.save(c);
     }
 
-    @RequestMapping(value = "/computer",  method=RequestMethod.POST)
+    @CrossOrigin(origins = "*")
+    @RequestMapping(value = "/computer",  method=RequestMethod.POST, headers = {"content-type=application/json"})
     public void saveComputer(@RequestBody Computer c) {
         database.save(c);
     }
@@ -38,6 +39,12 @@ public class MyController {
     @CrossOrigin(origins = "*")
     @RequestMapping(value = "/tv",  method=RequestMethod.POST, headers = {"content-type=application/json"})
     public void saveTV(@RequestBody TV c) {
+        database.save(c);
+    }
+
+    @CrossOrigin(origins = "*")
+    @RequestMapping(value = "/screen",  method=RequestMethod.POST, headers = {"content-type=application/json"})
+    public void saveScreen(@RequestBody Screen c) {
         database.save(c);
     }
 	
