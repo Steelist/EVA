@@ -28,10 +28,9 @@ public class MyController {
 
     }
 
-
     @RequestMapping({"/","/home"})
     public String showHomePage(Map<String, Object> model) {
-        return "/resources/index.html";
+        return "/index.html";
     }
 
 
