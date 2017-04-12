@@ -29,6 +29,7 @@ public class MyController {
     }
 
     public void fillWithTestdata(){
+
         database.save(new TV("Samsung UE65KU6405 65\" Ultra HD Smart LED",1199.90,"3840 × 2160 Ultra HD",0," 1458,1 x 841,4 x 54,9 mm","LED","16:9","Liitännät: 3 x HDMI, 2 x USB, komponentti-/komposiitti, digitaalinen audio ulos (optinen), Ethernet (LAN)\n" +
 "Anynet+ (HDMI-CEC)\n" +
 "HDMI 2.0a",26.8,"https://cdn-c.verkkokauppa.com/1920/images/40/2_391265-3840x2480.jpg"));
