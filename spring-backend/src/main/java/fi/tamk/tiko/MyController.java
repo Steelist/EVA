@@ -34,6 +34,9 @@ public class MyController {
         database.save(new TV("asd",200,"asd",2,"asd","asd","asd","asd",20,"asd"));
         database.save(new TV("asd",200,"asd",2,"asd","asd","asd","asd",20,"asd"));
         database.save(new TV("asd",200,"asd",2,"asd","asd","asd","asd",20,"asd"));
+        System.out.println("Url path \"localhost:8080/items\" shows all items currently in database");
+        System.out.println("Url path \"localhost:8080/items/{itemId}\" shows specific item with matching id in database");
+        System.out.println("Url path \"localhost:8080/index.html\" shows homepage where all items are shown");
     }
 
     @RequestMapping({"/","/home"})
@@ -77,9 +80,10 @@ public class MyController {
     @CrossOrigin(origins = "*")
 	@RequestMapping(value = "/items/{itemId}",  method=RequestMethod.GET)
     public ShoppingItem fetchItem(@PathVariable long itemId) {
-       
+
         return database.findOne(itemId);
     }
+
 	// When HTTP GET, POST, PUT or OTHER request happens
     // to http://localhost:8080/helloworld
     // invoke this method
