@@ -70,6 +70,9 @@ console.log(JSON.stringify(data).length);
           Quantity:<br/>
           <input type="number" name="quantity" defaultValue="10"/>
           <br/>
+          Tags:<br/>
+          <input type="text" name="tags" defaultValue="CasualGamer v0.5 tehomylly Intel i7-7700K 1080ti OC Windows 10 16gb RAM 750W psu"/>
+          <br/>
         <input type="submit" value="Submit" />
       </form>
     );

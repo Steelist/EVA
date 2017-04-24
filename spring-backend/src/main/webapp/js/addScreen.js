@@ -73,6 +73,9 @@ console.log(JSON.stringify(data).length);
           Picture:<br/>
           <input type="text" name="picture" defaultValue="https://images.jimms.fi/product/4/1/145548-p441729.jpg"/>
           <br/>
+          Tags:<br/>
+          <input type="text" name="tags" defaultValue="Benq XK250-H 180hz gaming monitor 270 degree 388,95€ full hd 16:9 1ms waste"/>
+          <br/>
         <input type="submit" value="Submit" />
       </form>
     );

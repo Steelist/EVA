@@ -35,7 +35,7 @@ console.log(JSON.stringify(data).length);
     return (
       <form onSubmit={this.handleSubmit} name="myform">
           Name:<br/>
-          <input type="text" name="name" defaultValue="Razor mouse"/>
+          <input type="text" name="name" defaultValue="Razer mouse"/>
           <br/>
           Price tag:<br/>
           <input type="number" name="price" defaultValue="99.99"/>
@@ -51,6 +51,9 @@ console.log(JSON.stringify(data).length);
           <br/>
           Picture:<br/>
           <input type="text" name="picture" defaultValue="http://www.novelupdates.com/img/noimagefound.jpg"/>
+          <br/>
+          Tags:<br/>
+          <input type="text" name="tags" defaultValue="Razer wireless mouse 6 buttons 99,99€"/>
           <br/>
         <input type="submit" value="Submit" />
       </form>

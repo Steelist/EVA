@@ -49,6 +49,9 @@ console.log(JSON.stringify(data).length);
           Picture:<br/>
           <input type="text" name="picture" defaultValue="http://www.novelupdates.com/img/noimagefound.jpg"/>
           <br/>
+          Tags:<br/>
+          <input type="text" name="tags" defaultValue="PS4 Playstation 4 pleikkari 350€ 15kg 1000gb"/>
+          <br/>
         <input type="submit" value="Submit" />
       </form>
     );

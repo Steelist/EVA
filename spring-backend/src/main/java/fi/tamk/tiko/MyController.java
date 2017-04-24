@@ -54,7 +54,7 @@ public class MyController {
 
     @RequestMapping({"/", "/home"})
     public String showHomePage(Map<String, Object> model) {
-        return "/index.html";
+        return "index.html";
     }
 
     // curl -H "Content-type: application/json" -X POST -d '{some json here...}' http://localhost:8080/items
