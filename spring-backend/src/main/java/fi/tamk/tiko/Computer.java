@@ -4,18 +4,27 @@ import javax.persistence.Entity;
 
 @Entity
 public class Computer extends ShoppingItem {
-    public String name;
-    public double price;
-    public String cpu;
-    public String gpu;
-    public String psu;
-    public String ram;
-    public String hdd;
-    public String motherBoard;
-    public double weight;
-    public String os;
-    public String picture;
-    public int quantity;
+    private String name;
+    private double price;
+    private String cpu;
+    private String gpu;
+    private String psu;
+    private String ram;
+    private String hdd;
+    private String motherBoard;
+    private double weight;
+    private String os;
+    private String picture;
+    private int quantity;
+    private String tags;
+
+    public String getTags() {
+        return tags;
+    }
+
+    public void setTags(String tags) {
+        this.tags = tags;
+    }
 
     public int getQuantity() {
         return quantity;
@@ -113,7 +122,7 @@ public class Computer extends ShoppingItem {
         this.picture = picture;
     }
 
-    public Computer(String name, double price, String cpu, String gpu, String psu, String ram, String hdd, String motherBoard, double weight, String os, String picture, int quantity) {
+    public Computer(String name, double price, String cpu, String gpu, String psu, String ram, String hdd, String motherBoard, double weight, String os, String picture, int quantity, String tags) {
         this.name = name;
         this.price = price;
         this.cpu = cpu;
@@ -126,10 +135,8 @@ public class Computer extends ShoppingItem {
         this.os = os;
         this.picture = picture;
         this.quantity = quantity;
+        this.tags = tags;
     }
-
-
-
 
     public Computer() {
 
