@@ -15,7 +15,6 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
-import javax.json.JsonObject;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 
@@ -123,7 +122,7 @@ public class MyController {
         List<ShoppingItem> data=database.findAll();
         List<ShoppingItem> temp=new ArrayList<>();
            for(int i = 0; i<data.size();i++){
-               if (data.get(i).getTags().contains(c.getTags())) {
+               if (data.get(i).getTags().toLowerCase().replace(" ", "").contains(c.getTags().toLowerCase().replace(" ", ""))) {
                    temp.add(data.get(i));
                }
            }
