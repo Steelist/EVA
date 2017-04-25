@@ -26,6 +26,9 @@ class StampForm extends React.Component {
         $.ajax({
             type:"POST",
             dataType:"json",
+            headers: {
+            'content-type': 'application/json',
+        },
             url: URL,
             data: JSON.stringify(data),
             success: function(response) {

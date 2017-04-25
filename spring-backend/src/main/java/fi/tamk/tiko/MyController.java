@@ -1,5 +1,6 @@
 package fi.tamk.tiko;
 
+
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -14,6 +15,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 
 // This class acts as a controller.
 // Usually when using @Controller, you will use also @RequestMapping
@@ -37,9 +40,9 @@ public class MyController {
                 + "BRAVIA Sync (HDMI-CEC)\n"
                 + "HDMI ARC (Audio Return Channel)\n",
                  145, "https://cdn-b.verkkokauppa.com/images/43/2_364055-1024x768.jpeg", ""));
-        database.save(new Screen(24, "570 x 222 x 431 mm", "BenQ Zowie XL2411 24\" LED", 299.90, "1920 x 1080", 144, 1, 170, "LED", "16:9", "D-SUB (VGA), DVI-DL, 1 x HDMI, 3.5 mm audio in/out", 6.1, "https://cdn-b.verkkokauppa.com/images/41/2_344675-699x650.jpg", ""));
-        database.save(new Screen(24, " 56,5 x 40,1 x 17,9 cm", "Acer GN246HL 24\" 144 Hz", 279.90, "1920 x 1080", 144, 1, 176, "TN", "16:9", "Liitäntöinä VGA, DVI sekä HDMI", 3.52, "https://cdn-b.verkkokauppa.com/images/94/2_176306-825x591.jpg", ""));
-        database.save(new Computer("Asus ROG G20BM ‐tietokone", 799.00, "AMD FX 770K Quad-Core 3,5 GHz", "AMD Radeon R9 380 2 Gt", null, "8 Gt DDR3 SO-DIMM", "1 Tt SATAIII 7200 RPM, jossa 8 Gt:n SSD-cache", "null", 0, "Windows", "https://cdn-a.verkkokauppa.com/1920/images/97/2_328712-2864x4000.jpg", 1, ""));
+        database.save(new Screen(24, "570 x 222 x 431 mm", "BenQ Zowie XL2411 24\" LED", 299.90, "1920 x 1080", 144, 1, 170, "LED", "16:9", "D-SUB (VGA), DVI-DL, 1 x HDMI, 3.5 mm audio in/out", 6.1, "https://cdn-b.verkkokauppa.com/images/41/2_344675-699x650.jpg", "asd"));
+        database.save(new Screen(24, " 56,5 x 40,1 x 17,9 cm", "Acer GN246HL 24\" 144 Hz", 279.90, "1920 x 1080", 144, 1, 176, "TN", "16:9", "Liitäntöinä VGA, DVI sekä HDMI", 3.52, "https://cdn-b.verkkokauppa.com/images/94/2_176306-825x591.jpg", "asd"));
+        database.save(new Computer("Asus ROG G20BM ‐tietokone", 799.00, "AMD FX 770K Quad-Core 3,5 GHz", "AMD Radeon R9 380 2 Gt", null, "8 Gt DDR3 SO-DIMM", "1 Tt SATAIII 7200 RPM, jossa 8 Gt:n SSD-cache", "null", 0, "Windows", "https://cdn-a.verkkokauppa.com/1920/images/97/2_328712-2864x4000.jpg", 1, "asd asd asd asd "));
         database.save(new Computer("cer Predator G3-710", 1249.90, "Intel Core i5-6400 Quad-Core 2.7 GHz", "NVIDIA GeForce GTX 1060 6 Gt", "500 W", "8 Gt (1 x 8 Gt) DDR4 2133 MHz", "256 Gt M.2 SATA SSD -levy + 1 Tt 7200 RPM SATA", null, 0, "Windows", "https://cdn-c.verkkokauppa.com/images/54/2_344297-800x1071.jpeg", 1, ""));
         System.out.println("Url path GET \"localhost:8080/items\" shows all items currently in database");
         System.out.println("Url path GET \"localhost:8080/items/{itemId}\" shows specific item with matching id in database");
@@ -105,9 +108,18 @@ public class MyController {
     }
 
     @CrossOrigin(origins = "*")
-    @RequestMapping(value = "/itemsSearch", method = RequestMethod.POST, headers = {"*"})
-    public void searchItems(@RequestBody String c) {
-        //asdasdasd
+    @RequestMapping(value = "/itemsSearch", method = RequestMethod.POST)
+    public List<ShoppingItem> searchItems(@RequestBody ShoppingItem c) {
+        List<ShoppingItem> data=database.findAll();
+        List<ShoppingItem> temp=new ArrayList<>();
+           for(int i = 0; i<data.size();i++){
+               if (data.get(i).getTags().contains(c.getTags())) {
+                   temp.add(data.get(i));
+               }
+           }
+        System.out.println(c.getTags());
+           
+        return temp;
     }
 
     // When HTTP GET, POST, PUT or OTHER request happens
