@@ -35,7 +35,7 @@ console.log(JSON.stringify(data).length);
     return (
       <form onSubmit={this.handleSubmit} name="myform">
           Name:<br/>
-          <input type="text" name="name" defaultValue="Tehomylly404"/>
+          <input type="text" name="name" defaultValue="JättiTV666"/>
           <br/>
           Price tag:<br/>
           <input type="number" name="price" defaultValue="99.99"/>
@@ -63,6 +63,9 @@ console.log(JSON.stringify(data).length);
           <br/>
           Picture:<br/>
           <input type="text" name="picture" defaultValue="https://images.jimms.fi/product/1/4/141015-p174303.jpg"/>
+          <br/>
+          Tags:<br/>
+          <input type="text" name="tags" defaultValue="JättiTV666 144hz gaming television 99,99€ full hd 16:9 led tv"/>
           <br/>
         <input type="submit" value="Submit" />
       </form>
