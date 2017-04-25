@@ -15,6 +15,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import javax.json.JsonObject;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 
@@ -25,6 +26,7 @@ public class MyController {
 
     @Autowired
     ShoppingItemRepository database;
+    List<ShoppingItem> shoppingCart;
 
     public MyController() {
 
@@ -53,6 +55,7 @@ public class MyController {
         System.out.println("Url path POST \"localhost:8080/computer\" adds new computer with given json data");
         System.out.println("Url path POST \"localhost:8080/tv\" adds new TV with given json data");
         System.out.println("Url path POST \"localhost:8080/screen\" adds new screen with given json data");
+        shoppingCart = new ArrayList();
     }
 
     @RequestMapping({"/", "/home"})
@@ -120,6 +123,12 @@ public class MyController {
         System.out.println(c.getTags());
            
         return temp;
+    }
+
+    @CrossOrigin(origins = "*")
+    @RequestMapping(value = "/updateCart", method = RequestMethod.POST, headers = {"*"})
+    public ShoppingItem updateCart(@RequestBody long c) {
+        return database.findOne(c);
     }
 
     // When HTTP GET, POST, PUT or OTHER request happens
