@@ -122,7 +122,7 @@ public class MyController {
         List<ShoppingItem> data=database.findAll();
         List<ShoppingItem> temp=new ArrayList<>();
            for(int i = 0; i<data.size();i++){
-               if (data.get(i).getTags().contains(c.getTags())) {
+               if (data.get(i).getTags().toLowerCase().replace(" ", "").contains(c.getTags().toLowerCase().replace(" ", ""))) {
                    temp.add(data.get(i));
                }
            }
