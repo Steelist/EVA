@@ -19,7 +19,7 @@ public class Screen extends ShoppingItem {
     private String connections;
     private double weight;
     private String picture;
-    private String tags;
+   
     public Screen(){
 
     }
@@ -38,7 +38,7 @@ public class Screen extends ShoppingItem {
         this.connections = connections;
         this.weight = weight;
         this.picture = picture;
-        this.tags = tags;
+        setTags(tags);
     }
 
     @java.lang.Override
@@ -59,15 +59,7 @@ public class Screen extends ShoppingItem {
                 ", picture='" + picture + '\'' +
                 '}';
     }
-
-    public String getTags() {
-        return tags;
-    }
-
-    public void setTags(String tags) {
-        this.tags = tags;
-    }
-
+   
     public double getScreenSize() {
         return screenSize;
     }
