@@ -14,6 +14,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import javax.json.JsonObject;
 
 // This class acts as a controller.
 // Usually when using @Controller, you will use also @RequestMapping
@@ -22,6 +23,7 @@ public class MyController {
 
     @Autowired
     ShoppingItemRepository database;
+    List<ShoppingItem> shoppingCart;
 
     public MyController() {
 
@@ -50,6 +52,7 @@ public class MyController {
         System.out.println("Url path POST \"localhost:8080/computer\" adds new computer with given json data");
         System.out.println("Url path POST \"localhost:8080/tv\" adds new TV with given json data");
         System.out.println("Url path POST \"localhost:8080/screen\" adds new screen with given json data");
+        shoppingCart = new ArrayList();
     }
 
     @RequestMapping({"/", "/home"})
@@ -108,6 +111,12 @@ public class MyController {
     @RequestMapping(value = "/itemsSearch", method = RequestMethod.POST, headers = {"*"})
     public void searchItems(@RequestBody String c) {
         //asdasdasd
+    }
+
+    @CrossOrigin(origins = "*")
+    @RequestMapping(value = "/updateCart", method = RequestMethod.POST, headers = {"*"})
+    public ShoppingItem updateCart(@RequestBody long c) {
+        return database.findOne(c);
     }
 
     // When HTTP GET, POST, PUT or OTHER request happens

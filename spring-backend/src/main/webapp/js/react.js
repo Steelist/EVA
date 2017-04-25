@@ -60,8 +60,29 @@ var Result = React.createClass({
         );
     }
 });
-var ResultItem = React.createClass({
-    render:function(){
+class ResultItem extends React.Component{
+    constructor(props){
+        super(props);
+        this.handleClick = this.handleClick.bind(this);
+    }
+    handleClick(id){
+        var data = id;
+        var URL = 'http://localhost:8080/updateCart';
+            $.ajax({
+                type:"POST",
+                dataType:"json",
+                url: URL,
+                data: data,
+                success: function(response) {
+                    this.showResult(response);
+                }.bind(this),
+                error: function(xhr, status, err) {
+                    console.error(this.props.url, status, err.toString());
+                }.bind(this)
+            });
+    }
+
+    render(){
         var camper = this.props.user;
         return(
             <div className="col-xs-6 col-sm-4 col-md-3">
@@ -70,10 +91,11 @@ var ResultItem = React.createClass({
                 <div className="col-xs-12"><img src={camper.picture} /></div>
                 <div className="col-xs-12"><p>Hinta:&nbsp;{camper.price}</p></div>
                 <div className="col-xs-12"><p>Paino:&nbsp;{camper.weight}</p></div>
+                <div classname="cartButton"><button onClick={this.handleClick(camper.id)}>Add to shopping cart</button></div>
             </div>
             </div>
         );
     }
-});
+}
 
 ReactDOM.render(<MainBox />, document.getElementById('app'));
