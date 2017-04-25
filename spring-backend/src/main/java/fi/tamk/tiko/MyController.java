@@ -95,6 +95,13 @@ public class MyController {
     }
 
     @CrossOrigin(origins = "*")
+    @RequestMapping(value = "/showShoppingCart", method = RequestMethod.GET)
+    public Iterable<ShoppingItem> getCart() {
+
+        return shoppingCart;
+    }
+
+    @CrossOrigin(origins = "*")
     @RequestMapping(value = "/items/{itemId}", method = RequestMethod.GET)
     public ShoppingItem fetchItem(@PathVariable long itemId) {
 
@@ -125,9 +132,11 @@ public class MyController {
     }
 
     @CrossOrigin(origins = "*")
-    @RequestMapping(value = "/updateCart", method = RequestMethod.POST, headers = {"*"})
-    public ShoppingItem updateCart(@RequestBody long c) {
-        return database.findOne(c);
+    @RequestMapping(value = "/updateCart", method = RequestMethod.POST)
+    public List<ShoppingItem> updateCart(@RequestBody CartItem c) {
+        System.out.println(c.getId());
+        shoppingCart.add(database.findOne(c.getId()));
+        return shoppingCart;
     }
 
     // When HTTP GET, POST, PUT or OTHER request happens
