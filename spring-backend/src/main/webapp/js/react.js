@@ -68,7 +68,9 @@ class ResultItem extends React.Component{
 
     render(){
         var camper = this.props.user;
+        var link = "http://localhost:8080/items/"+camper.id;
         return(
+        <a href={link}>
             <div className="col-xs-6 col-sm-4 col-md-3">
             <div className="item">
             <div className="col-xs-12"><h3>{camper.name}</h3></div>
@@ -80,6 +82,7 @@ class ResultItem extends React.Component{
                 </div>
             </div>
             </div>
+        </a>
         );
     }
     handleSubmit(event){
