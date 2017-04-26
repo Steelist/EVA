@@ -14,7 +14,7 @@ var App = React.createClass({
         };
     },
     componentDidMount(){
-        this.getDataFromServer('http://localhost:8080/items');
+        this.getDataFromServer('http://localhost:8080/showShoppingCart');
     },
     //showResult Method
         showResult: function(response) {
@@ -63,43 +63,22 @@ var Result = React.createClass({
 class ResultItem extends React.Component{
     constructor(props){
         super(props);
-        this.handleSubmit = this.handleSubmit.bind(this);
+
     }
 
     render(){
         var camper = this.props.user;
-        var link = "http://localhost:8080/items/"+camper.id;
         return(
-        <a href={link}>
             <div className="col-xs-6 col-sm-4 col-md-3">
             <div className="item">
             <div className="col-xs-12"><h3>{camper.name}</h3></div>
                 <div className="col-xs-12"><img src={camper.picture} /></div>
                 <div className="col-xs-12"><p>Hinta:&nbsp;{camper.price}</p></div>
                 <div className="col-xs-12"><p>Paino:&nbsp;{camper.weight}</p></div>
-                <div classname="cartButton">
-                    <button onClick={this.handleSubmit}>Add to shopping cart</button>
-                </div>
             </div>
             </div>
-        </a>
         );
     }
-    handleSubmit(event){
-    event.preventDefault();
-        console.log(this.props.user.id);
-            var data = this.props.user.id;
-            var URL = 'http://localhost:8080/updateCart';
-                $.ajax({
-                    type:"POST",
-                    dataType:"json",
-                    headers: {
-                                'content-type': 'application/json',
-                            },
-                    url: URL,
-                    data: JSON.stringify(data)
-                });
-        }
 }
 
 ReactDOM.render(<MainBox />, document.getElementById('app'));

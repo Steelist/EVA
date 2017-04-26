@@ -6,25 +6,25 @@ import javax.persistence.Entity;
 
 @Entity
 public class Screen extends ShoppingItem {
-    public double screenSize;
-    public String packageSize;
-    public String name;
-    public double price;
-    public String resolution;
-    public int refreshRate;
-    public double wasteTime;
-    public double viewingAngle;
-    public String type;
-    public String aspectRatio;
-    public String connections;
-    public double weight;
-    public String picture;
-
+    private double screenSize;
+    private String packageSize;
+    private String name;
+    private double price;
+    private String resolution;
+    private int refreshRate;
+    private double wasteTime;
+    private double viewingAngle;
+    private String type;
+    private String aspectRatio;
+    private String connections;
+    private double weight;
+    private String picture;
+   
     public Screen(){
 
     }
 
-    public Screen(double screenSize, String packageSize, String name, double price, String resolution, int refreshRate, double wasteTime, double viewingAngle, String type, String aspectRatio, String connections, double weight, String picture) {
+    public Screen(double screenSize, String packageSize, String name, double price, String resolution, int refreshRate, double wasteTime, double viewingAngle, String type, String aspectRatio, String connections, double weight, String picture, String tags) {
         this.screenSize = screenSize;
         this.packageSize = packageSize;
         this.name = name;
@@ -38,6 +38,7 @@ public class Screen extends ShoppingItem {
         this.connections = connections;
         this.weight = weight;
         this.picture = picture;
+        setTags(tags);
     }
 
     @java.lang.Override
@@ -58,7 +59,7 @@ public class Screen extends ShoppingItem {
                 ", picture='" + picture + '\'' +
                 '}';
     }
-
+   
     public double getScreenSize() {
         return screenSize;
     }

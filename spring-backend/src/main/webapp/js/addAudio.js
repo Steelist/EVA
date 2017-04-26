@@ -52,6 +52,9 @@ console.log(JSON.stringify(data).length);
           Picture:<br/>
           <input type="text" name="picture" defaultValue="http://www.novelupdates.com/img/noimagefound.jpg"/>
           <br/>
+          Tags:<br/>
+          <input type="text" name="tags" defaultValue="Sony audio 6channel 80W 60€"/>
+          <br/>
         <input type="submit" value="Submit" />
       </form>
     );

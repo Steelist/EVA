@@ -4,22 +4,23 @@ import javax.persistence.Entity;
 
 @Entity
 public class TV extends ShoppingItem {
-    public String name;
-    public double price;
-    public String resolution;
-    public int refreshRate;
-    public String size;
-    public String type;
-    public String aspectRatio;
-    public String connections;
-    public double weight;
-    public String picture;
+    private String name;
+    private double price;
+    private String resolution;
+    private int refreshRate;
+    private String size;
+    private String type;
+    private String aspectRatio;
+    private String connections;
+    private double weight;
+    private String picture;
+    private String tags;
 
     public TV(){
 
     }
 
-    public TV(String name, double price, String resolution, int refreshRate, String size, String type, String aspectRatio, String connections, double weight, String picture) {
+    public TV(String name, double price, String resolution, int refreshRate, String size, String type, String aspectRatio, String connections, double weight, String picture, String tags) {
         this.name = name;
         this.price = price;
         this.resolution = resolution;
@@ -30,6 +31,7 @@ public class TV extends ShoppingItem {
         this.connections = connections;
         this.weight = weight;
         this.picture = picture;
+        this.tags = tags;
     }
 
     @java.lang.Override
@@ -46,6 +48,14 @@ public class TV extends ShoppingItem {
                 ", weight=" + weight +
                 ", picture='" + picture + '\'' +
                 '}';
+    }
+
+    public String getTags() {
+        return tags;
+    }
+
+    public void setTags(String tags) {
+        this.tags = tags;
     }
 
     public String getName() {
