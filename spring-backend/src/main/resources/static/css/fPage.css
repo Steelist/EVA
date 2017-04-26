@@ -3,6 +3,10 @@ img {
     max-height: 200px;
 }
 
+.topBar {
+    display: inline-block;
+}
+
 .container {
     min-width: 512px;
 }
