@@ -34,17 +34,17 @@ class RegisterForm extends React.Component {
         return (
             <form onSubmit={this.handleSubmit} name="myform">
             Name:<br/>
-        <input type="text" name="name" defaultValue="Name"/>
+        <input type="text" name="name"  placeholder="Name"/>
             <br/>
             UserName:<br/>
-        <input type="text" name="username" defaultValue="UserName"/>
+        <input type="text" name="username"  placeholder="UserName"/>
             <br/>
 
             Password:<br/>
-        <input type="text" name="password" defaultValue="Password"/>
+        <input type="text" name="password" placeholder="Password"/>
             <br/>
             <br/>
-            <input type="submit" value="Submit" />
+            <input type="submit" value="Register" />
             </form>
     );
     }
@@ -63,5 +63,5 @@ function getFormData($form){
 
 ReactDOM.render(
 <RegisterForm/>,
-    document.getElementById('root')
+    document.getElementById('register')
 );
