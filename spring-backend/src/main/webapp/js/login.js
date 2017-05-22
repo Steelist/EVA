@@ -22,10 +22,15 @@ class LoginForm extends React.Component {
         dataType: "json",
         data: JSON.stringify(data),
         success: function(data) {
+            var x = document.cookie;
+            x = "name="+data.name+";path=/";
+            console.log(x);
             console.log(data);
         }.bind(this),
         error: function(xhr, status, err) {
             console.log('error');
+            var x = document.cookie;
+            console.log(x);
         }.bind(this)
         });
     }
