@@ -1,34 +1,33 @@
 class StampForm extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {value: ''};
-    this.state = {data: ["asd"]}
-    this.handleChange = this.handleChange.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
-  }
+    constructor(props) {
+        super(props);
+        this.state = {value: ''};
+        this.state = {data: ["asd"]}
+        this.handleChange = this.handleChange.bind(this);
+        this.handleSubmit = this.handleSubmit.bind(this);
+    }
 
-
-  handleChange(event) {
-    this.setState({value: event.target.value});
-  }
+    handleChange(event) {
+        this.setState({value: event.target.value});
+    }
 
     showResult(response) {
-
-            this.setState({
-                data: response
-            });
+        this.setState({
+            data: response
+        });
     }
 
 
-  getDataFromServer(URL){
-  var frm = $(document.myform);
-    var data = getFormData(frm);
+    getDataFromServer(URL){
+        var frm = $(document.myform);
+        var data = getFormData(frm);
+
         $.ajax({
             type:"POST",
             dataType:"json",
             headers: {
-            'content-type': 'application/json',
-        },
+                'content-type': 'application/json',
+            },
             url: URL,
             data: JSON.stringify(data),
             success: function(response) {
@@ -40,32 +39,25 @@ class StampForm extends React.Component {
         });
     }
 
-
-  handleSubmit(event) {
-    event.preventDefault();
-    this.getDataFromServer('http://localhost:8080/itemsSearch');
-    var frm = $(document.myform);
-    var data = getFormData(frm);
+    handleSubmit(event) {
+        event.preventDefault();
+        this.getDataFromServer('http://localhost:8080/itemsSearch');
+        var frm = $(document.myform);
+        var data = getFormData(frm);
     }
 
+    render() {
+        return (
+            <div>
+            <form onSubmit={this.handleSubmit} name="myform">
+            <br/>
+            <input type="text" name="tags" placeholder="Press enter to search..."></input>
+            </form>
 
-
-
-
-  render() {
-    return (
-    <div>
-      <form onSubmit={this.handleSubmit} name="myform">
-          <br/>
-          <input type="text" name="tags" placeholder="Press enter to search..."></input>
-
-      </form>
-
-      <Result result={this.state.data}/>
-
-      </div>
+            <Result result={this.state.data}/>
+    </div>
     );
-  }
+    }
 }
 
 function getFormData($form){
@@ -84,12 +76,12 @@ var Result = React.createClass({
     render:function(){
         var result = this.props.result.map(function(result,index){
             return <ResultItem key={index} user={ result } />
-            });
+        });
         return(
             <div className="container">
-                <div className="row">
-                    {result}
-                </div>
+            <div className="row">
+            {result}
+            </div>
             </div>
         );
     }
@@ -103,20 +95,19 @@ var ResultItem = React.createClass({
                 <div className="col-xs-6 col-sm-4 col-md-3">
                 <div className="item">
                 <div className="col-xs-12"><h3>{camper.name}</h3></div>
-                    <div className="col-xs-12"><img src={camper.picture} /></div>
-                    <div className="col-xs-12"><p>Hinta:&nbsp;{camper.price}</p></div>
-                    <div className="col-xs-12"><p>Paino:&nbsp;{camper.weight}</p></div>
-                </div>
-                </div>
-            );
+            <div className="col-xs-12"><img src={camper.picture} /></div>
+            <div className="col-xs-12"><p>Hinta:&nbsp;{camper.price}</p></div>
+            <div className="col-xs-12"><p>Paino:&nbsp;{camper.weight}</p></div>
+            </div>
+            </div>
+        );
         }else{
             return <div></div>
         }
     }
 });
 
-
 ReactDOM.render(
-            <StampForm/>,
-            document.getElementById('app2')
-        );
+<StampForm/>,
+    document.getElementById('app2')
+);

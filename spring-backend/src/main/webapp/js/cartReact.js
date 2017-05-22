@@ -17,11 +17,10 @@ var App = React.createClass({
         this.getDataFromServer('http://localhost:8080/showShoppingCart');
     },
     //showResult Method
-        showResult: function(response) {
-
-            this.setState({
-                data: response
-            });
+    showResult: function(response) {
+        this.setState({
+            data: response
+        });
     },
     //making ajax call to get data from server
     getDataFromServer:function(URL){
@@ -40,8 +39,8 @@ var App = React.createClass({
     render:function(){
         return(
             <div>
-                <Result result={this.state.data}/>
-            </div>
+            <Result result={this.state.data}/>
+        </div>
         );
     }
 });
@@ -50,12 +49,12 @@ var Result = React.createClass({
     render:function(){
         var result = this.props.result.map(function(result,index){
             return <ResultItem key={index} user={ result } />
-            });
+        });
         return(
             <div className="container">
-                <div className="row">
-                    {result}
-                </div>
+            <div className="row">
+            {result}
+            </div>
             </div>
         );
     }
@@ -72,12 +71,12 @@ class ResultItem extends React.Component{
             <div className="col-xs-6 col-sm-4 col-md-3">
             <div className="item">
             <div className="col-xs-12"><h3>{camper.name}</h3></div>
-                <div className="col-xs-12"><img src={camper.picture} /></div>
-                <div className="col-xs-12"><p>Hinta:&nbsp;{camper.price}</p></div>
-                <div className="col-xs-12"><p>Paino:&nbsp;{camper.weight}</p></div>
-            </div>
-            </div>
-        );
+        <div className="col-xs-12"><img src={camper.picture} /></div>
+        <div className="col-xs-12"><p>Hinta:&nbsp;{camper.price}</p></div>
+        <div className="col-xs-12"><p>Paino:&nbsp;{camper.weight}</p></div>
+        </div>
+        </div>
+    );
     }
 }
 
