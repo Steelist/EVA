@@ -15,6 +15,7 @@ var App = React.createClass({
     },
     componentDidMount(){
         this.getDataFromServer('http://localhost:8080/showShoppingCart');
+        console.log(decodeURIComponent(document.cookie));
     },
     //showResult Method
     showResult: function(response) {
