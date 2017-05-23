@@ -14,7 +14,7 @@ var App = React.createClass({
         };
     },
     componentDidMount(){
-        this.getDataFromServer('http://localhost:8080/showShoppingCart');
+        this.getDataFromServer('http://localhost:8080/showShoppingCart/pena');
         console.log(decodeURIComponent(document.cookie));
     },
     //showResult Method
