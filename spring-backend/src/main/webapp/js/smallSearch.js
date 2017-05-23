@@ -51,7 +51,7 @@ class StampForm extends React.Component {
             <div>
             <form onSubmit={this.handleSubmit} name="myform">
            
-            <input id="app2" type="text" name="tags" placeholder="Press enter to search..."></input>
+            <input id="app2" type="text" name="tags" placeholder="Search items..."></input>
             </form>
 
             <Result result={this.state.data}/>
@@ -109,5 +109,5 @@ var ResultItem = React.createClass({
 
 ReactDOM.render(
 <StampForm/>,
-    document.getElementById('app2')
+    document.getElementById('search')
 );
