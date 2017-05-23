@@ -16,6 +16,7 @@ class RegisterForm extends React.Component {
         var frm = $(document.myform);
         var data = getFormData(frm);
         console.log(JSON.stringify(data));
+        caller();
         $.ajax({
         url: 'http://koti.tamk.fi/~c4vstenm/Register3.php',
         type:"POST",
