@@ -30,6 +30,7 @@ class LoginForm extends React.Component {
                  document.cookie = "path=/";
                  console.log(document.cookie);
                  console.log(data);
+                 location.reload();
             }else{
                 console.log(document.cookie);
                 console.log(data);
