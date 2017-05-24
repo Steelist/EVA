@@ -53,8 +53,10 @@ var Result = React.createClass({
         });
         return(
             <div className="container">
+            <div className="col-md-9">
             <div className="row">
             {result}
+            </div>
             </div>
             </div>
         );
@@ -87,19 +89,21 @@ class ResultItem extends React.Component{
         var camper = this.props.user;
         var link = "http://localhost:8080/items/"+camper.id;
         return(
-            <a href={link}>
-            <div className="col-xs-6 col-sm-4 col-md-3">
-            <div className="item">
-            <div className="col-xs-12"><h3>{camper.name}</h3></div>
-        <div className="col-xs-12"><img src={camper.picture} /></div>
-        <div className="col-xs-12"><p>Hinta:&nbsp;{camper.price}</p></div>
-        <div className="col-xs-12"><p>Paino:&nbsp;{camper.weight}</p></div>
-        <div classname="cartButton">
-            <button onClick={this.handleSubmit}>Add to shopping cart</button>
-        </div>
-        </div>
-        </div>
-        </a>
+           <div className="col-sm-4 col-lg-4 col-md-4">
+                        <div className="thumbnail">
+                        <img src={camper.picture} alt=""></img>
+                            <div className="caption">
+                                <h4 className="pull-right">{camper.price} €</h4>
+                                <br></br>
+                                <h4><a href={link}>{camper.name}</a>
+                                </h4>
+                                <p>This is a short description. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                            </div>
+                            <div classname="cartButton">
+                                <button onClick={this.handleSubmit}>Add to shopping cart</button>
+                            </div>
+                        </div>
+                    </div>
     );
     }
     handleSubmit(event){
