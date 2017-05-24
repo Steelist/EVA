@@ -15,6 +15,7 @@ class LoginForm extends React.Component {
         event.preventDefault();
         var frm = $(document.myform);
         var data = getFormData(frm);
+        
         console.log(JSON.stringify(data));
         $.ajax({
         url: 'http://koti.tamk.fi/~c4vstenm/Login3.php',
@@ -50,12 +51,13 @@ class LoginForm extends React.Component {
              
             <form onSubmit={this.handleSubmit} name="myform">
             UserName:
-        <input type="text" name="username" placeholder="UserName"/>
+            
+        <input id="username" type="text" name="username" placeholder="UserName"/>
             
             Password:
-        <input type="text" name="password" placeholder="Password"/>
+        <input id="password" type="text" name="password" placeholder="Password"/>
            
-            <input type="submit" value="Login" />
+            <input id="loginbutton" type="submit" value="Login" />
             <a href="register.html">Register</a>
             </form>
            

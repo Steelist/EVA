@@ -18,24 +18,42 @@
     <link href="css/shop-homepage.css" rel="stylesheet">
   <link rel="stylesheet" type="text/css" href="css/fPage.css">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-        <!-- My CSS file -->
-        <link rel="stylesheet" type="text/css" href="css/fPage.css">
+  
+     <link rel="stylesheet" type="text/css" href="css/smallSearch.css">
+        
        
         <script src="https://unpkg.com/react@15/dist/react.min.js"></script>
         <script src="https://unpkg.com/react-dom@15/dist/react-dom.min.js"></script>
         <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
         <script src="https://unpkg.com/jquery@3.2.1"></script>
         <script type="text/babel" src="js/login.js"> </script>  
+       <script type="text/babel" src="js/smallSearch.js"></script>
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
         <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
-
+<script>
+function customAlert(msg,duration)
+{
+ var styler = document.createElement("div");
+  styler.setAttribute("style","border: solid 5px Red;width:auto;height:auto;top:50%;left:40%;background-color:#444;color:Silver;");
+ styler.innerHTML = "<p>"+msg+"</p>";
+ setTimeout(function()
+ {
+   styler.parentNode.removeChild(styler);
+ },duration);
+ document.getElementById("alert").appendChild(styler);
+}
+  function caller()
+  {
+    customAlert("Tuote lisätty ostoskoriin","7000");
+  }
+  </script>
 </head>
 
-<body>
+<body >
 
     <!-- Navigation -->
     <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
@@ -66,18 +84,14 @@
                     <li>
                         <a href="#">Contact</a>
                     </li>
-                 
-                        
-           
-                       
-                    
-                 
+
                      <li>
                         
                         <div id="root"></div>
-            
-                       
-                    
+
+                    </li>
+                    <li>
+                        <div id="alert"></div>
                     </li>
                 </ul>
             </div>
@@ -88,7 +102,7 @@
     </nav>
 
     <!-- Page Content -->
-    <div class="container">
+    <div class="container" >
 
         <div class="row">
 
@@ -103,40 +117,9 @@
 
             <div class="col-md-9">
 
-                <div class="row carousel-holder">
-          
-            
-                    <div class="col-md-12">
-                        <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
-                            <ol class="carousel-indicators">
-                                <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
-                                <li data-target="#carousel-example-generic" data-slide-to="1"></li>
-                                <li data-target="#carousel-example-generic" data-slide-to="2"></li>
-                            </ol>
-                            <div class="carousel-inner">
-                                <div class="item active">
-                                    <img class="slide-image" src="http://placehold.it/800x300" alt="">
-                                </div>
-                                <div class="item">
-                                    <img class="slide-image" src="http://placehold.it/800x300" alt="">
-                                </div>
-                                <div class="item">
-                                    <img class="slide-image" src="http://placehold.it/800x300" alt="">
-                                </div>
-                            </div>
-                            <a class="left carousel-control" href="#carousel-example-generic" data-slide="prev">
-                                <span class="glyphicon glyphicon-chevron-left"></span>
-                            </a>
-                            <a class="right carousel-control" href="#carousel-example-generic" data-slide="next">
-                                <span class="glyphicon glyphicon-chevron-right"></span>
-                            </a>
-                        </div>
-                    </div>
-
-                </div>
-  <div id="app2"></div>
-            <script type="text/babel" src="js/smallSearch.js">
-            </script>
+               
+            <div id="search"></div>
+           
                 <div class="row">
 
                     <div class="col-sm-4 col-lg-4 col-md-4">

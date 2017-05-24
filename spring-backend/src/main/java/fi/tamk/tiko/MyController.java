@@ -139,10 +139,13 @@ public class MyController {
         List<ShoppingItem> data=database.findAll();
         List<ShoppingItem> temp=new ArrayList<>();
            for(int i = 0; i<data.size();i++){
+               if(!c.getTags().equals("")){
                if (data.get(i).getTags().toLowerCase().replace(" ", "").contains(c.getTags().toLowerCase().replace(" ", ""))) {
                    temp.add(data.get(i));
                }
+               }
            }
+           
         System.out.println(c.getTags());
            
         return temp;
