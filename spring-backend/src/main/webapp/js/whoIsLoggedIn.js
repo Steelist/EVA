@@ -36,11 +36,11 @@ class LoginState extends React.Component {
     render() {
         var x = getCookie("name");
         if(x==="Not logged in"){
-        return(<div><h2>You are not logged in!</h2></div>);
+        return(<div><p>You are not logged in!</p></div>);
         }else{
             return (
                 <div>
-                <h2>{x}</h2>
+                <p>{x}</p>
                 <button type="button" onClick={this.logout}>Logout</button>
                 </div>
             );

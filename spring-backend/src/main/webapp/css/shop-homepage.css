@@ -11,6 +11,11 @@ body {
 .slide-image {
     width: 100%;
 }
+
+#loggedIn{
+    padding-top: 12px;
+    color: #9d9d9d;
+}
 #cart {
     margin: 0 auto;
     margin-left: 5px;
