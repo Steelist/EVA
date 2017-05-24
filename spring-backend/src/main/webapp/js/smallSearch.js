@@ -79,8 +79,10 @@ var Result = React.createClass({
         });
         return(
             <div className="container">
+            <div className="col-md-9">
             <div className="row">
             {result}
+            </div>
             </div>
             </div>
         );
@@ -90,16 +92,24 @@ var Result = React.createClass({
 var ResultItem = React.createClass({
     render:function(){
         var camper = this.props.user;
+         
         if (camper.name){
             return(
-                <div className="col-xs-6 col-sm-4 col-md-3">
-                <div className="item">
-                <div className="col-xs-12"><h3>{camper.name}</h3></div>
-            <div className="col-xs-12"><img src={camper.picture} /></div>
-            <div className="col-xs-12"><p>Hinta:&nbsp;{camper.price}</p></div>
-            <div className="col-xs-12"><p>Paino:&nbsp;{camper.weight}</p></div>
-            </div>
-            </div>
+                      <div className="col-sm-4 col-lg-4 col-md-4">
+                        <div className="thumbnail">
+                        <img src={camper.picture} alt=""></img>
+                            <div className="caption">
+                                <h4 className="pull-right">{camper.price} €</h4>
+                                <br></br>
+                                <h4><a href="">{camper.name}</a>
+                                </h4>
+                                <p>This is a short description. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                            </div>
+                           
+                        </div>
+                    </div>
+              
+            
         );
         }else{
             return <div></div>
