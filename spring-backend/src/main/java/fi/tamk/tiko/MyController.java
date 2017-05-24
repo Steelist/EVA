@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 import org.springframework.http.HttpStatus;
@@ -99,6 +100,22 @@ public class MyController {
     public Iterable<ShoppingItem> getCart() {
 
         return shoppingCart;
+    }
+    
+    @CrossOrigin(origins = "*")
+    @RequestMapping(value = "/showShoppingCartWithItems/{list}", method = RequestMethod.GET)
+    public List<ShoppingItem> getCartWithItems(@PathVariable String list) {
+        List<String> items = Arrays.asList(list.split("\\s*,\\s*"));
+        List<Integer> intList = new ArrayList();
+        List<ShoppingItem> shoppingList = new ArrayList();
+        for(int i=0; i<items.size(); i++){
+            intList.add(Integer.parseInt(items.get(i)));
+        }
+        for(int i=0; i<intList.size(); i++){
+            shoppingList.add(database.findOne((long)intList.get(i)));
+        }
+
+        return shoppingList;
     }
 
     @CrossOrigin(origins = "*")
