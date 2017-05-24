@@ -60,6 +60,23 @@ var Result = React.createClass({
         );
     }
 });
+
+function getCookie(cname) {
+    var name = cname + "=";
+    var decodedCookie = decodeURIComponent(document.cookie);
+    var ca = decodedCookie.split(';');
+    for(var i = 0; i <ca.length; i++) {
+        var c = ca[i];
+        while (c.charAt(0) == ' ') {
+            c = c.substring(1);
+        }
+        if (c.indexOf(name) == 0) {
+            return c.substring(name.length, c.length);
+        }
+    }
+    return "";
+}
+
 class ResultItem extends React.Component{
     constructor(props){
         super(props);
@@ -89,6 +106,14 @@ class ResultItem extends React.Component{
         event.preventDefault();
         console.log(this.props.user.id);
         var data = this.props.user.id;
+        var x = getCookie("cart");
+        var now = new Date();
+        now.setMonth( now.getMonth() + 1 );
+        document.cookie = "cart="+x+","+data;
+        document.cookie = "expires="+now.toUTCString();
+        document.cookie = "path=/";
+        console.log(document.cookie);
+        /*
         var URL = 'http://localhost:8080/updateCart';
         $.ajax({
             type:"POST",
@@ -98,7 +123,7 @@ class ResultItem extends React.Component{
             },
             url: URL,
             data: JSON.stringify(data)
-        });
+        });*/
     }
 }
 

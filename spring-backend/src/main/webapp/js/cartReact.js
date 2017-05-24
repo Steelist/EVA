@@ -6,6 +6,22 @@ var MainBox  = React.createClass({
     }
 });
 
+function getCookie(cname) {
+    var name = cname + "=";
+    var decodedCookie = decodeURIComponent(document.cookie);
+    var ca = decodedCookie.split(';');
+    for(var i = 0; i <ca.length; i++) {
+        var c = ca[i];
+        while (c.charAt(0) == ' ') {
+            c = c.substring(1);
+        }
+        if (c.indexOf(name) == 0) {
+            return c.substring(name.length, c.length);
+        }
+    }
+    return "";
+}
+
 var App = React.createClass({
     //setting up initial state
     getInitialState:function(){
@@ -14,7 +30,7 @@ var App = React.createClass({
         };
     },
     componentDidMount(){
-        this.getDataFromServer('http://localhost:8080/showShoppingCart/pena');
+        this.getDataFromServer('http://localhost:8080/showShoppingCartWithItems/'+getCookie("cart").substring(1));
         console.log(decodeURIComponent(document.cookie));
     },
     //showResult Method
@@ -25,9 +41,11 @@ var App = React.createClass({
     },
     //making ajax call to get data from server
     getDataFromServer:function(URL){
+        console.log(getCookie("cart").substring(1));
         $.ajax({
             type:"GET",
             dataType:"json",
+            //data: getCookie("cart").substring(1),
             url: URL,
             success: function(response) {
                 this.showResult(response);
