@@ -36,6 +36,7 @@ class LoginForm extends React.Component {
             }else{
                 console.log(document.cookie);
                 console.log(data);
+                alert("Wrong login credentials");
             }
 
         }.bind(this),
@@ -48,22 +49,43 @@ class LoginForm extends React.Component {
     }
 
     render() {
-        return (
-             
-            <form onSubmit={this.handleSubmit} name="myform">
-            UserName:
-            
-        <input id="username" type="text" name="username" placeholder="UserName"/>
-            
-            Password:
-        <input id="password" type="text" name="password" placeholder="Password"/>
-           
-            <input id="loginbutton" type="submit" value="Login" />
-            <a href="register.html">Register</a>
-            </form>
-           
-    );
+        if(getCookie("name")==="Not logged in"){
+            return (
+
+                    <form onSubmit={this.handleSubmit} name="myform">
+                    UserName:
+
+                <input id="username" type="text" name="username" placeholder="UserName"/>
+
+                    Password:
+                <input id="password" type="text" name="password" placeholder="Password"/>
+
+                    <input id="loginbutton" type="submit" value="Login" />
+                    <a href="register.html">Register</a>
+                    </form>
+
+            );
+        }else{
+            return (<div></div>);
+        }
+
     }
+}
+
+function getCookie(cname) {
+    var name = cname + "=";
+    var decodedCookie = decodeURIComponent(document.cookie);
+    var ca = decodedCookie.split(';');
+    for(var i = 0; i <ca.length; i++) {
+        var c = ca[i];
+        while (c.charAt(0) == ' ') {
+            c = c.substring(1);
+        }
+        if (c.indexOf(name) == 0) {
+            return c.substring(name.length, c.length);
+        }
+    }
+    return "";
 }
 
 function getFormData($form){
