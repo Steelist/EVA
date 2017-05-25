@@ -25,7 +25,6 @@ import org.springframework.transaction.annotation.Transactional;
 // This class acts as a controller.
 // Usually when using @Controller, you will use also @RequestMapping
 @RestController
-@Transactional 
 public class MyController {
 
     @Autowired
