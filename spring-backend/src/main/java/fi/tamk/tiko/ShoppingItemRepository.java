@@ -1,4 +1,3 @@
-
 package fi.tamk.tiko;
 
 import org.springframework.data.repository.query.Param;
@@ -8,9 +7,17 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.transaction.annotation.Transactional;
 
+/**
+ *
+ * @author Erqq
+ */
 public interface ShoppingItemRepository extends JpaRepository<ShoppingItem, Long> {
-    
-    
+
+    /**
+     *
+     * @param id
+     * @param quantity
+     */
     @Modifying
     @Query("Update ShoppingItem t SET t.quantity=:quantity WHERE t.id=:id")
     @Transactional
