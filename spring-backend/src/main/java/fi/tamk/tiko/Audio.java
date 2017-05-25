@@ -16,7 +16,7 @@ public class Audio extends ShoppingItem {
 
     }
 
-    public Audio(String name, double price, double power, double subwooferPower, int channels, String picture, int quantity) {
+    public Audio(String name, double price, double power, double subwooferPower, int channels, String picture, int quantity, String tags) {
         this.name = name;
         this.price = price;
         this.power = power;
@@ -24,6 +24,7 @@ public class Audio extends ShoppingItem {
         this.channels = channels;
         this.picture = picture;
         setQuantity(quantity);
+        setTags(tags);
     }
 
     @java.lang.Override

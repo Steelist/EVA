@@ -15,13 +15,14 @@ public class Console extends ShoppingItem {
 
     }
 
-    public Console(String name, double price, double weight, int memory, String picture, int quantity) {
+    public Console(String name, double price, double weight, int memory, String picture, int quantity, String tags) {
         this.name = name;
         this.price = price;
         this.weight = weight;
         this.memory = memory;
         this.picture = picture;
         setQuantity(quantity);
+        setTags(tags);
     }
 
     @java.lang.Override
