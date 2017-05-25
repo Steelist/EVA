@@ -81,16 +81,18 @@ class Item extends React.Component{
 
     render(){
         var camper = this.props.user;
+        var price= parseFloat(camper.price).toFixed(2);
         const divStyle = {
             padding: 20 + 'px',
         };
+      
         return(
                 <div className="thumbnail" style={divStyle}>
                 <img className="img-responsive" src={camper.picture} alt=""></img>
                     <div className="caption-full">
-                        <h4 className="pull-right">{camper.price} €</h4>
+                        <h3 className="pull-right">{price} €</h3>
                        
-                        <h4><a href="#">{camper.name}</a>
+                        <h4><h3 >{camper.name}</h3>
                             
                         </h4>
                         <div classname="cartButton">
@@ -109,7 +111,6 @@ class Item extends React.Component{
     handleSubmit(event){
             event.preventDefault();
             caller();
-            console.log(this.props.user.id);
             var data = this.props.user.id;
             var x = getCookie("cart");
             var now = new Date();
@@ -117,7 +118,6 @@ class Item extends React.Component{
             document.cookie = "cart="+x+","+data;
             document.cookie = "expires="+now.toUTCString();
             document.cookie = "path=/";
-            console.log(document.cookie);
             /*
             var URL = 'http://localhost:8080/updateCart';
             $.ajax({

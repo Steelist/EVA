@@ -21,13 +21,13 @@ class LoginState extends React.Component {
 
     }
     componentDidMount(){
-        console.log(decodeURIComponent(document.cookie));
     }
 
     logout(){
         var now = new Date();
         now.setMonth( now.getMonth() + 1 );
         document.cookie = "name=Not logged in";
+        document.cookie = "cart=";
         document.cookie = "expires="+now.toUTCString();
         document.cookie = "path=/";
         location.reload();

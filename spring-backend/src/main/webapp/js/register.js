@@ -15,7 +15,6 @@ class RegisterForm extends React.Component {
         event.preventDefault();
         var frm = $(document.myform);
         var data = getFormData(frm);
-        console.log(JSON.stringify(data));
         //caller();
         $.ajax({
         url: 'http://koti.tamk.fi/~c4vstenm/Register3.php',
@@ -47,7 +46,7 @@ class RegisterForm extends React.Component {
             <br/>
 
             Password:<br/>
-        <input type="text" name="password" placeholder="Password"/>
+        <input type="password" name="password" placeholder="Password"/>
             <br/>
             <br/>
             <input type="submit" value="Register" />

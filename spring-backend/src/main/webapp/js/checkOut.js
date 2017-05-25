@@ -29,7 +29,6 @@ class CheckButton extends React.Component{
             dataType:"json",
             url: URL,
             success: function(response) {
-                console.log(response);
             }.bind(this)
         });
     }
@@ -42,6 +41,7 @@ class CheckButton extends React.Component{
         document.cookie = "cart=";
         document.cookie = "expires="+now.toUTCString();
         document.cookie = "path=/";
+        alert("Thank you for your purchase! Your items will be on their way as soon as possible.")
         location.reload();
     }
     render(){
