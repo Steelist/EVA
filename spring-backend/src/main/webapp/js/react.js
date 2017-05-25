@@ -25,9 +25,10 @@ var App = React.createClass({
         };
     },
     componentDidMount(){
+
              var path = window.location.pathname;
              console.log(path);
-        if(path.includes("/audiodevice.html")){
+    if(path.includes("/audiodevice.html")){
         this.getDataFromServer('http://localhost:8080/audio');
     }else if (path.includes("/computers.html")){
         this.getDataFromServer('http://localhost:8080/computer');
@@ -134,7 +135,7 @@ class ResultItem extends React.Component{
                         <div className="thumbnail">
                         <img src={camper.picture} alt=""></img>
                             <div className="caption">
-                                <h4 className="pull-right">{camper.price} €</h4>
+                                <h4 className="pull-right">{camper.price.toFixed(2)} €</h4>
                                 <br></br>
                                 <h4><a onClick={this.handleClick}>{camper.name}</a>
                                 </h4>
@@ -173,4 +174,50 @@ class ResultItem extends React.Component{
     }
 }
 
+
+
+class AdminStuff extends React.Component{
+    render(){
+        if(getCookie("name")==="admin"){
+            return(
+                <div>
+                    <form action="addTV.html">
+                        <input type="submit" value="Add television" />
+                    </form>
+                    <br/>
+                    <form action="addScreen.html">
+                        <input type="submit" value="Add screen" />
+                    </form>
+                    <br/>
+                    <form action="addComputer.html">
+                        <input type="submit" value="Add computer" />
+                    </form>
+                    <br/>
+                    <form action="addAudio.html">
+                        <input type="submit" value="Add audio" />
+                    </form>
+                    <br/>
+                    <form action="addKeyboard.html">
+                        <input type="submit" value="Add keyboard" />
+                    </form>
+                    <br/>
+                    <form action="addMouse.html">
+                        <input type="submit" value="Add mouse" />
+                    </form>
+                    <br/>
+                    <form action="addConsole.html">
+                        <input type="submit" value="Add console" />
+                    </form>
+                </div>
+            );
+        }else{
+            return(
+                <div></div>
+            );
+        }
+
+    }
+}
+
 ReactDOM.render(<MainBox />, document.getElementById('app'));
+ReactDOM.render(<AdminStuff />, document.getElementById('admin'));

@@ -16,14 +16,19 @@ class RegisterForm extends React.Component {
         var frm = $(document.myform);
         var data = getFormData(frm);
         console.log(JSON.stringify(data));
-        caller();
+        //caller();
         $.ajax({
         url: 'http://koti.tamk.fi/~c4vstenm/Register3.php',
         type:"POST",
         dataType: "json",
         data: JSON.stringify(data),
         success: function(data) {
-            console.log(data);
+            if(data.success===true){
+                alert("User succesfully registered!");
+            }else{
+                alert("Username already in use!");
+            }
+
         }.bind(this),
         error: function(xhr, status, err) {
             console.log('error');
