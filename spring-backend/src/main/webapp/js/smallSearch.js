@@ -18,32 +18,21 @@ class StampForm extends React.Component {
     }
 
 
-    getDataFromServer(URL){
+    getDataFromServer(){
         var frm = $(document.myform);
         var data = getFormData(frm);
+        var now = new Date();
+        now.setMonth( now.getMonth() + 1 );
+        document.cookie = "search="+JSON.stringify(data);
+        document.cookie = "expires="+now.toUTCString();
+        document.cookie = "path=/";
+        window.location.replace("search.html");
 
-        $.ajax({
-            type:"POST",
-            dataType:"json",
-            headers: {
-                'content-type': 'application/json',
-            },
-            url: URL,
-            data: JSON.stringify(data),
-            success: function(response) {
-                this.showResult(response);
-            }.bind(this),
-            error: function(xhr, status, err) {
-                console.error(this.props.url, status, err.toString());
-            }.bind(this)
-        });
     }
 
     handleSubmit(event) {
         event.preventDefault();
-        this.getDataFromServer('http://localhost:8080/itemsSearch');
-        var frm = $(document.myform);
-        var data = getFormData(frm);
+        this.getDataFromServer();
     }
 
     render() {
@@ -54,7 +43,6 @@ class StampForm extends React.Component {
             <input id="app2" type="text" name="tags" placeholder="Search items..."></input>
             </form>
 
-            <Result result={this.state.data}/>
     </div>
     );
     }
@@ -71,51 +59,6 @@ function getFormData($form){
     return indexed_array;
 }
 
-
-var Result = React.createClass({
-    render:function(){
-        var result = this.props.result.map(function(result,index){
-            return <ResultItem key={index} user={ result } />
-        });
-        return(
-            <div className="container">
-            <div className="col-md-9">
-            <div className="row">
-            {result}
-            </div>
-            </div>
-            </div>
-        );
-    }
-});
-
-var ResultItem = React.createClass({
-    render:function(){
-        var camper = this.props.user;
-         
-        if (camper.name){
-            return(
-                      <div className="col-sm-4 col-lg-4 col-md-4">
-                        <div className="thumbnail">
-                        <img src={camper.picture} alt=""></img>
-                            <div className="caption">
-                                <h4 className="pull-right">{camper.price} €</h4>
-                                <br></br>
-                                <h4><a href="">{camper.name}</a>
-                                </h4>
-                                <p>This is a short description. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                            </div>
-                           
-                        </div>
-                    </div>
-              
-            
-        );
-        }else{
-            return <div></div>
-        }
-    }
-});
 
 ReactDOM.render(
 <StampForm/>,
