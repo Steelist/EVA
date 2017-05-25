@@ -42,18 +42,21 @@ var App = React.createClass({
     //making ajax call to get data from server
     getDataFromServer:function(URL){
         console.log(getCookie("cart").substring(1));
-        $.ajax({
-            type:"GET",
-            dataType:"json",
-            //data: getCookie("cart").substring(1),
-            url: URL,
-            success: function(response) {
-                this.showResult(response);
-            }.bind(this),
-            error: function(xhr, status, err) {
-                console.error(this.props.url, status, err.toString());
-            }.bind(this)
-        });
+        if(getCookie("cart").substring(0,1)===","){
+            $.ajax({
+                    type:"GET",
+                    dataType:"json",
+                    //data: getCookie("cart").substring(1),
+                    url: URL,
+                    success: function(response) {
+                        this.showResult(response);
+                    }.bind(this),
+                    error: function(xhr, status, err) {
+                        console.error(this.props.url, status, err.toString());
+                    }.bind(this)
+                });
+        }
+
     },
     render:function(){
         return(
@@ -83,6 +86,25 @@ var Result = React.createClass({
 class ResultItem extends React.Component{
     constructor(props){
         super(props);
+        this.removeFromCart = this.removeFromCart.bind(this);
+
+    }
+    removeFromCart(event){
+        event.preventDefault();
+        console.log(this.props.user.id);
+        var x = getCookie("cart");
+        console.log(x);
+        console.log(x.includes(this.props.user.id));
+        if(x.includes(this.props.user.id)){
+            x = x.replace(","+this.props.user.id, '');
+            console.log(x);
+            var now = new Date();
+            now.setMonth( now.getMonth() + 1 );
+            document.cookie = "cart="+x;
+            document.cookie = "expires="+now.toUTCString();
+            document.cookie = "path=/";
+            location.reload();
+        }
 
     }
 
@@ -100,7 +122,7 @@ class ResultItem extends React.Component{
                                 </h4>
                                 <p>This is a short description. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
                             </div>
-                           
+                            <button onClick={this.removeFromCart}>Remove from cart</button>
                         </div>
                     </div>
     );
