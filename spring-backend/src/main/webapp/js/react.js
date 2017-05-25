@@ -25,9 +25,10 @@ var App = React.createClass({
         };
     },
     componentDidMount(){
+
              var path = window.location.pathname;
              console.log(path);
-        if(path.includes("/audiodevice.html")){
+    if(path.includes("/audiodevice.html")){
         this.getDataFromServer('http://localhost:8080/audio');
     }else if (path.includes("/computers.html")){
         this.getDataFromServer('http://localhost:8080/computer');
@@ -134,7 +135,7 @@ class ResultItem extends React.Component{
                         <div className="thumbnail">
                         <img src={camper.picture} alt=""></img>
                             <div className="caption">
-                                <h4 className="pull-right">{camper.price} €</h4>
+                                <h4 className="pull-right">{camper.price.toFixed(2)} €</h4>
                                 <br></br>
                                 <h4><a onClick={this.handleClick}>{camper.name}</a>
                                 </h4>

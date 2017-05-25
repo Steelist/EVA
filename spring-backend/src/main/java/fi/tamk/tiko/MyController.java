@@ -291,12 +291,19 @@ public class MyController {
         database.save(new TV("Sony 100\" Smart 4K Ultra HD", 74999.90, "3840 × 2160 Ultra HD", 1200, "225,8 x 130,3 x 9,8 cm", "LED", "16:9", "Liitännät: 4 x HDMI, 3 x USB, SCART, Ethernet, komposiittivideotulo, analoginen äänitulo, digitaalinen äänilähtö, kuulokeliitäntä\n"
                 + "HDCP 2.2\n"
                 + "BRAVIA Sync (HDMI-CEC)\n"
-                + "HDMI ARC (Audio Return Channel)\n",
-                 145, "https://cdn-b.verkkokauppa.com/images/43/2_364055-1024x768.jpeg", "Sony KD100ZD9 100\" Smart Android 4K Ultra HD LED 3840 × 2160 Ultra HD 225,8 x 130,3 x 9,8 cm 16:9 ",10));
+                + "HDMI ARC (Audio Return Channel)\n",145, "https://cdn-b.verkkokauppa.com/images/43/2_364055-1024x768.jpeg", "Sony KD100ZD9 100\" Smart Android 4K Ultra HD LED 3840 × 2160 Ultra HD 225,8 x 130,3 x 9,8 cm 16:9 ",10));
         database.save(new Screen(24, "570 x 222 x 431 mm", "BenQ Zowie 24\" LED", 299.90, "1920 x 1080", 144, 1, 170, "LED", "16:9", "D-SUB (VGA), DVI-DL, 1 x HDMI, 3.5 mm audio in/out", 6.1, "https://cdn-b.verkkokauppa.com/images/41/2_344675-699x650.jpg", "570 x 222 x 431 mm BenQ Zowie XL2411 24\" LED 1920 x 1080 16:9 D-SUB (VGA), DVI-DL, 1 x HDMI, 3.5 mm audio in/out",10));
         database.save(new Screen(24, " 56,5 x 40,1 x 17,9 cm", "Acer 24\" 144 Hz", 279.90, "1920 x 1080", 144, 1, 176, "TN", "16:9", "Liitäntöinä VGA, DVI sekä HDMI", 3.52, "https://cdn-b.verkkokauppa.com/images/94/2_176306-825x591.jpg", "56,5 x 40,1 x 17,9 cm Acer GN246HL 24\" 144 Hz TN VGA, DVI sekä HDMI",10));
         database.save(new Computer("Asus ROG G20BM ‐tietokone", 799.00, "AMD FX 770K Quad-Core 3,5 GHz", "AMD Radeon R9 380 2 Gt", null, "8 Gt DDR3 SO-DIMM", "1 Tt SATAIII 7200 RPM, jossa 8 Gt:n SSD-cache", "null", 0, "Windows", "https://cdn-a.verkkokauppa.com/1920/images/97/2_328712-2864x4000.jpg", 1, "\"Asus ROG G20BM ‐tietokone AMD FX 770K Quad-Core 3,5 GHz AMD Radeon R9 380 2 Gt 8 Gt DDR3 SO-DIMM 1 Tt SATAIII 7200 RPM, jossa 8 Gt:n SSD-cache"));
         database.save(new Computer("cer Predator G3-710", 1249.90, "Intel Core i5-6400 Quad-Core 2.7 GHz", "NVIDIA GeForce GTX 1060 6 Gt", "500 W", "8 Gt (1 x 8 Gt) DDR4 2133 MHz", "256 Gt M.2 SATA SSD -levy + 1 Tt 7200 RPM SATA", null, 0, "Windows", "https://cdn-c.verkkokauppa.com/images/54/2_344297-800x1071.jpeg", 1, "cer Predator G3-710 Intel Core i5-6400 Quad-Core 2.7 GHz NVIDIA GeForce GTX 1060 6 Gt 500 W 8 Gt (1 x 8 Gt) DDR4 2133 MHz 256 Gt M.2 SATA SSD -levy + 1 Tt 7200 RPM SATA"));
+        database.save(new Audio("Philips SHK1030",13.90,0,0,0,"images/kuuloke1.jpeg",6));
+        database.save(new Audio("Sennheiser HD 800 S",2999.90,0,0,0,"images/kuuloke2.jpeg",15));
+        database.save(new Keyboard("Deltaco TB-121",10.90,0.098,0,false,"images/nappis1.jpeg",11));
+        database.save(new Keyboard("Asus ROG Claymore",239.90,0.943,0,false,"images/nappis2.jpg",13));
+        database.save(new Console("Sony PlayStation 4 500 Gt",299.90,2.1,500,"images/ps4.jpg",20));
+        database.save(new Console("Nintendo Switch",349.90,0.398,32,"images/switch.jpeg",1));
+        database.save(new Mouse("Fuj:tech Optical Mouse",4.90,0,3,false,"images/hiiri1.jpeg",20));
+        database.save(new Mouse("3Dconnexion SpaceMouse",459.90,0,15,true,"images/hiiri2.jpg",5));
         System.out.println("Url path GET \"localhost:8080/items\" shows all items currently in database");
         System.out.println("Url path GET \"localhost:8080/items/{itemId}\" shows specific item with matching id in database");
         System.out.println("Url path GET \"localhost:8080/index.html\" shows homepage where all items are shown");
