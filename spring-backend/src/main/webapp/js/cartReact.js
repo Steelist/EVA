@@ -87,7 +87,16 @@ class ResultItem extends React.Component{
     constructor(props){
         super(props);
         this.removeFromCart = this.removeFromCart.bind(this);
+        this.handleClick = this.handleClick.bind(this);
+    }
 
+    handleClick(event){
+        var now = new Date();
+        now.setMonth( now.getMonth() + 1 );
+        document.cookie = "item="+this.props.user.id;
+        document.cookie = "expires="+now.toUTCString();
+        document.cookie = "path=/";
+        window.location.replace("showitem.html");
     }
     removeFromCart(event){
         event.preventDefault();
@@ -118,7 +127,7 @@ class ResultItem extends React.Component{
                             <div className="caption">
                                 <h4 className="pull-right">{camper.price} €</h4>
                                 <br></br>
-                                <h4><a href={link}>{camper.name}</a>
+                                <h4><a onClick={this.handleClick}>{camper.name}</a>
                                 </h4>
                                 <p>This is a short description. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
                             </div>

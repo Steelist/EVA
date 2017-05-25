@@ -16,12 +16,16 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.transaction.annotation.Transactional;
 
 // This class acts as a controller.
 // Usually when using @Controller, you will use also @RequestMapping
 @RestController
+@Transactional 
 public class MyController {
 
     @Autowired
@@ -51,7 +55,31 @@ public class MyController {
     public void saveComputer(@RequestBody Computer c) {
         database.save(c);
     }
+    
+    @CrossOrigin(origins = "*")
+    @RequestMapping(value = "/mouse", method = RequestMethod.POST, headers = {"content-type=application/json"})
+    public void saveMouse(@RequestBody Mouse c) {
+        database.save(c);
+    }
 
+    @CrossOrigin(origins = "*")
+    @RequestMapping(value = "/audio", method = RequestMethod.POST, headers = {"content-type=application/json"})
+    public void saveAudio(@RequestBody Audio c) {
+        database.save(c);
+    }
+    
+    @CrossOrigin(origins = "*")
+    @RequestMapping(value = "/keyboard", method = RequestMethod.POST, headers = {"content-type=application/json"})
+    public void saveKeyboard(@RequestBody Keyboard c) {
+        database.save(c);
+    }
+    
+    @CrossOrigin(origins = "*")
+    @RequestMapping(value = "/console", method = RequestMethod.POST, headers = {"content-type=application/json"})
+    public void saveConsole(@RequestBody Console c) {
+        database.save(c);
+    }
+    
     @CrossOrigin(origins = "*")
     @RequestMapping(value = "/tv", method = RequestMethod.POST, headers = {"content-type=application/json"})
     public void saveTV(@RequestBody TV c) {
@@ -85,7 +113,9 @@ public class MyController {
         List<Integer> intList = new ArrayList();
         List<ShoppingItem> shoppingList = new ArrayList();
         for(int i=0; i<items.size(); i++){
-            intList.add(Integer.parseInt(items.get(i)));
+            if(!items.get(i).equals("")){
+                intList.add(Integer.parseInt(items.get(i)));
+            }
         }
         for(int i=0; i<intList.size(); i++){
             shoppingList.add(database.findOne((long)intList.get(i)));
@@ -93,6 +123,27 @@ public class MyController {
 
         return shoppingList;
     }
+    
+    @CrossOrigin(origins = "*")
+    @RequestMapping(value = "/checkOutItems/{list}", method = RequestMethod.GET)
+    public List<ShoppingItem> checkOutItems(@PathVariable String list) {
+        List<String> items = Arrays.asList(list.split("\\s*,\\s*"));
+        List<Integer> intList = new ArrayList();
+        List<ShoppingItem> shoppingList = new ArrayList();
+        for(int i=0; i<items.size(); i++){
+            if(!items.get(i).equals("")){
+                intList.add(Integer.parseInt(items.get(i)));
+                
+            }
+        }
+        for(int i=0; i<intList.size(); i++){
+            System.out.println(database.findOne((long)intList.get(i)).getQuantity());
+            database.updateCount((long)intList.get(i),database.findOne((long)intList.get(i)).getQuantity()-1);
+        }
+
+        return shoppingList;
+    }
+    
 
     @CrossOrigin(origins = "*")
     @RequestMapping(value = "/items/{itemId}", method = RequestMethod.GET)
@@ -232,6 +283,7 @@ public class MyController {
     public String helloworld() {
         return "Hello World";
     }
+    
     public void fillWithTestdata() {
 
         database.save(new TV("Samsung 65\" Ultra HD Smart", 1199.90, "3840 × 2160 Ultra HD", 0, " 1458,1 x 841,4 x 54,9 mm", "LED", "16:9", "Liitännät: 3 x HDMI, 2 x USB, komponentti-/komposiitti, digitaalinen audio ulos (optinen), Ethernet (LAN)\n"
