@@ -22,6 +22,15 @@ body {
     padding-top: 12px;
     
 }
+#alert {
+    margin-top: 5px;
+    
+}
+#logoutbutton{
+    margin-left: 5px;
+    background-color: #333;
+    border-color: #101010;
+}
 #username {
     margin:0 auto;
     margin-left: 5px;
