@@ -137,7 +137,7 @@ class ResultItem extends React.Component{
                             <div className="caption">
                                 <h4 className="pull-right">{camper.price.toFixed(2)} €</h4>
                                 <br></br>
-                                <h4><a onClick={this.handleClick}>{camper.name}</a>
+                                <h4><a href="#" onClick={this.handleClick}>{camper.name}</a>
                                 </h4>
                                 <p>This is a short description. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
                             </div>
