@@ -81,9 +81,11 @@ class Item extends React.Component{
 
     render(){
         var camper = this.props.user;
+        const divStyle = {
+            padding: 20 + 'px',
+        };
         return(
-
-                <div className="thumbnail">
+                <div className="thumbnail" style={divStyle}>
                 <img className="img-responsive" src={camper.picture} alt=""></img>
                     <div className="caption-full">
                         <h4 className="pull-right">{camper.price} €</h4>
