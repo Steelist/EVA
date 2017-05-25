@@ -102,8 +102,37 @@ var Result = React.createClass({
     }
 });
 
-var ResultItem = React.createClass({
-    render:function(){
+class ResultItem extends React.Component{
+    constructor(props){
+        super(props);
+        this.handleSubmit = this.handleSubmit.bind(this);
+        this.handleClick = this.handleClick.bind(this);
+    }
+
+    handleClick(event){
+        var now = new Date();
+        now.setMonth( now.getMonth() + 1 );
+        document.cookie = "item="+this.props.user.id;
+        document.cookie = "expires="+now.toUTCString();
+        document.cookie = "path=/";
+        window.location.replace("showitem.html");
+    }
+
+    handleSubmit(event){
+        event.preventDefault();
+        caller();
+        console.log(this.props.user.id);
+        var data = this.props.user.id;
+        var x = getCookie("cart");
+        var now = new Date();
+        now.setMonth( now.getMonth() + 1 );
+        document.cookie = "cart="+x+","+data;
+        document.cookie = "expires="+now.toUTCString();
+        document.cookie = "path=/";
+        console.log(document.cookie);
+    }
+
+    render(){
         var camper = this.props.user;
 
         if (camper.name){
@@ -114,9 +143,12 @@ var ResultItem = React.createClass({
                             <div className="caption">
                                 <h4 className="pull-right">{camper.price} €</h4>
                                 <br></br>
-                                <h4><a href="">{camper.name}</a>
+                                <h4><a href="#" onClick={this.handleClick}>{camper.name}</a>
                                 </h4>
                                 <p>This is a short description. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                            </div>
+                            <div classname="cartButton">
+                                <button id="checkoutbutton" onClick={this.handleSubmit}>Add to shopping cart</button>
                             </div>
 
                         </div>
@@ -128,7 +160,7 @@ var ResultItem = React.createClass({
             return <div></div>
         }
     }
-});
+}
 
 ReactDOM.render(
 <StampForm/>,
