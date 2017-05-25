@@ -38,7 +38,7 @@
 function customAlert(msg,duration)
 {
  var styler = document.createElement("div");
-  styler.setAttribute("style","border: solid 5px Red;width:auto;height:auto;top:50%;left:40%;background-color:#444;color:Silver;");
+  styler.setAttribute("style","border: solid 5px Red;top:50%;left:40%;background-color:#444;color:Silver;");
  styler.innerHTML = "<p>"+msg+"</p>";
  setTimeout(function()
  {
@@ -48,7 +48,7 @@ function customAlert(msg,duration)
 }
   function caller()
   {
-    customAlert("Tuote lisätty ostoskoriin","7000");
+    customAlert("Product added to shopping cart","3000");
   }
   </script>
 </head>
@@ -95,13 +95,12 @@ function customAlert(msg,duration)
                         <div id="login"></div>
 
                     </li>
-                    <li>
-                        <div id="alert"></div>
-                    </li>
+                 
                     <li>
                         <a href="shoppingCart.html">Shoppingcart</a>
-                       
+                         
                     </li>
+                    <li> <div id="alert"></div></li>
                 </ul>
             </div>
               
@@ -127,8 +126,9 @@ function customAlert(msg,duration)
 
             <div class="col-md-9">
 
-               
+             
                 <div id="search"></div>
+               
                 <div id="app"></div>
 
             </div>

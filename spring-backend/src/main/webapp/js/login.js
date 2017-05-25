@@ -24,7 +24,7 @@ class LoginForm extends React.Component {
         data: JSON.stringify(data),
         success: function(data) {
             if(data.success){
-                caller();
+               
                  var now = new Date();
                  now.setMonth( now.getMonth() + 1 );
                  document.cookie = "name="+data.name;
