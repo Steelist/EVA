@@ -87,15 +87,18 @@ class Item extends React.Component{
                 <img className="img-responsive" src={camper.picture} alt=""></img>
                     <div className="caption-full">
                         <h4 className="pull-right">{camper.price} €</h4>
+                       
                         <h4><a href="#">{camper.name}</a>
+                            
                         </h4>
-                        <p>See more snippets like these online store reviews at <a target="_blank" href="http://bootsnipp.com">Bootsnipp - http://bootsnipp.com</a>.</p>
-                        <p>Want to make these reviews work? Check out
-                            <strong><a href="http://maxoffsky.com/code-blog/laravel-shop-tutorial-1-building-a-review-system/">this building a review system tutorial</a>
-                            </strong>over at maxoffsky.com!</p>
+                        <div classname="cartButton">
+                                <button id="checkoutbuttonItem" onClick={this.handleSubmit}>Add to shopping cart</button>
+                            </div>
+                       
                         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum</p>
+                       
                     </div>
-                    
+                         
                 </div>
             
         );
