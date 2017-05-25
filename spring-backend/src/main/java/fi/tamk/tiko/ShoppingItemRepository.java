@@ -10,11 +10,6 @@ import org.springframework.transaction.annotation.Transactional;
 
 public interface ShoppingItemRepository extends JpaRepository<ShoppingItem, Long> {
     
-    @Modifying
-    @Query("Update ShoppingItem t SET t.price=:price WHERE t.id=:id")
-    @Transactional
-    public void updateTitle(@Param("id") Long id, @Param("price") Double price);
-    
     
     @Modifying
     @Query("Update ShoppingItem t SET t.quantity=:quantity WHERE t.id=:id")
