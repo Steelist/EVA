@@ -14,4 +14,10 @@ public interface ShoppingItemRepository extends JpaRepository<ShoppingItem, Long
     @Query("Update ShoppingItem t SET t.price=:price WHERE t.id=:id")
     @Transactional
     public void updateTitle(@Param("id") Long id, @Param("price") Double price);
+    
+    
+    @Modifying
+    @Query("Update ShoppingItem t SET t.quantity=:quantity WHERE t.id=:id")
+    @Transactional
+    public void updateCount(@Param("id") Long id, @Param("quantity") int quantity);
 }
