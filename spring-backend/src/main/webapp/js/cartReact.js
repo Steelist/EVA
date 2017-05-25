@@ -117,12 +117,15 @@ class ResultItem extends React.Component{
         const divStyle = {
             padding: 20 + 'px',
         };
+        const mainDiv = {
+            marginBottom: 30 + 'px',
+        };
         const imageWrapper = {
             width: 200 + 'px',
             height: 200 + 'px',
-        }
+        };
         return(
-           <div className="col-sm-4 col-lg-4 col-md-4">
+           <div className="col-sm-4 col-lg-4 col-md-4" style={mainDiv}>
                         <div className="thumbnail" style={divStyle}>
                 <div style={imageWrapper}>
                         <img src={camper.picture} alt=""></img></div>
