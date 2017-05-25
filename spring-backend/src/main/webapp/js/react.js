@@ -1,4 +1,15 @@
+if(!localStorage["alertdisplayed"]) {
+    var now = new Date();
+    now.setMonth( now.getMonth() + 1 );
+    document.cookie = "name=Not logged in";
+    document.cookie = "expires="+now.toUTCString();
+    document.cookie = "path=/";
+    location.reload();
+    localStorage["alertdisplayed"] = true
+}
+
 var MainBox  = React.createClass({
+
     render:function(){
         return(
             <App/>
@@ -84,6 +95,7 @@ class ResultItem extends React.Component{
         super(props);
         this.handleSubmit = this.handleSubmit.bind(this);
     }
+
 
     render(){
         var camper = this.props.user;
