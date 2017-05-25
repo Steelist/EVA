@@ -12,17 +12,30 @@ public class ShoppingItem{
     private long id;
     
     private String tags;
+    
+    private int quantity;
 
 	public ShoppingItem(){
 		
 	}
-	public ShoppingItem(String tags){
+	public ShoppingItem(String tags, int quantity){
 		this.tags=tags;
+                this.quantity=quantity;
 	}
 	public long getId(){
 		return id;
 	}
 
+    public int getQuantity() {
+        return quantity;
+    }
+
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
+    }
+
+      
+        
     public String getTags() {
         return tags;
     }

@@ -45,6 +45,9 @@ class MouseForm extends React.Component {
             Buttons:<br/>
         <input type="number" name="buttons" defaultValue="6"/>
             <br/>
+            Quantity:<br/>
+        <input type="number" name="quantity" defaultValue="10"/>
+            <br/>
             Wireless:<br/>
         <input type="checkbox" name="wireless"/>
             <br/>

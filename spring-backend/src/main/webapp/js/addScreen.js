@@ -69,6 +69,9 @@ class ScreenForm extends React.Component {
             Weight:<br/>
         <input type="number" name="weight" defaultValue="15.65"/>
             <br/>
+            Quantity:<br/>
+        <input type="number" name="quantity" defaultValue="10"/>
+            <br/>
             Picture:<br/>
         <input type="text" name="picture" defaultValue="https://images.jimms.fi/product/4/1/145548-p441729.jpg"/>
             <br/>

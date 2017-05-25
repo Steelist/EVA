@@ -51,7 +51,31 @@ public class MyController {
     public void saveComputer(@RequestBody Computer c) {
         database.save(c);
     }
+    
+    @CrossOrigin(origins = "*")
+    @RequestMapping(value = "/mouse", method = RequestMethod.POST, headers = {"content-type=application/json"})
+    public void saveMouse(@RequestBody Mouse c) {
+        database.save(c);
+    }
 
+    @CrossOrigin(origins = "*")
+    @RequestMapping(value = "/audio", method = RequestMethod.POST, headers = {"content-type=application/json"})
+    public void saveAudio(@RequestBody Audio c) {
+        database.save(c);
+    }
+    
+    @CrossOrigin(origins = "*")
+    @RequestMapping(value = "/keyboard", method = RequestMethod.POST, headers = {"content-type=application/json"})
+    public void saveKeyboard(@RequestBody Keyboard c) {
+        database.save(c);
+    }
+    
+    @CrossOrigin(origins = "*")
+    @RequestMapping(value = "/console", method = RequestMethod.POST, headers = {"content-type=application/json"})
+    public void saveConsole(@RequestBody Console c) {
+        database.save(c);
+    }
+    
     @CrossOrigin(origins = "*")
     @RequestMapping(value = "/tv", method = RequestMethod.POST, headers = {"content-type=application/json"})
     public void saveTV(@RequestBody TV c) {

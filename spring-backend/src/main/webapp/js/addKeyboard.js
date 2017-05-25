@@ -47,6 +47,9 @@ class KeyboardForm extends React.Component {
             Wireless:<br/>
         <input type="checkbox" name="wireless"/>
             <br/>
+            Quantity:<br/>
+        <input type="number" name="quantity" defaultValue="10"/>
+            <br/>
             Picture:<br/>
         <input type="text" name="picture" defaultValue="http://www.novelupdates.com/img/noimagefound.jpg"/>
             <br/>
