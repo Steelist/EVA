@@ -41,7 +41,7 @@ class LoginState extends React.Component {
             return (
                 <div>
          
-                <p>{x}<button id="logoutbutton" type="button" onClick={this.logout}>Logout</button></p>
+                <p>{x}<button id="checkoutbutton" type="button" onClick={this.logout}>Logout</button></p>
                
                 </div>
             );

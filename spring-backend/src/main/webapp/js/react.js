@@ -100,7 +100,7 @@ class ResultItem extends React.Component{
                                 <p>This is a short description. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
                             </div>
                             <div classname="cartButton">
-                                <button onClick={this.handleSubmit}>Add to shopping cart</button>
+                                <button id="checkoutbutton" onClick={this.handleSubmit}>Add to shopping cart</button>
                             </div>
                         </div>
                     </div>
