@@ -48,6 +48,9 @@ class AudioForm extends React.Component {
             Channels:<br/>
         <input type="number" name="channels" defaultValue="6"/>
             <br/>
+            Quantity:<br/>
+        <input type="number" name="quantity" defaultValue="10"/>
+            <br/>
             Picture:<br/>
         <input type="text" name="picture" defaultValue="http://www.novelupdates.com/img/noimagefound.jpg"/>
             <br/>

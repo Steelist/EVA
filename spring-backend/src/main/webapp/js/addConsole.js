@@ -45,6 +45,9 @@ class ConsoleForm extends React.Component {
             Memory (GB):<br/>
         <input type="number" name="memory" defaultValue="1000"/>
             <br/>
+            Quantity:<br/>
+        <input type="number" name="quantity" defaultValue="10"/>
+            <br/>
             Picture:<br/>
         <input type="text" name="picture" defaultValue="http://www.novelupdates.com/img/noimagefound.jpg"/>
             <br/>
