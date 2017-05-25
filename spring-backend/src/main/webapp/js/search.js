@@ -132,5 +132,5 @@ var ResultItem = React.createClass({
 
 ReactDOM.render(
 <StampForm/>,
-    document.getElementById('search')
+    document.getElementById('searchResult')
 );
