@@ -26,19 +26,20 @@ var App = React.createClass({
     },
     componentDidMount(){
              var path = window.location.pathname;
-        if(path==  "/audiodevice.html"){
+             console.log(path);
+        if(path.includes("/audiodevice.html")){
         this.getDataFromServer('http://localhost:8080/audio');
-    }else if (path == "/computers.html"){
+    }else if (path.includes("/computers.html")){
         this.getDataFromServer('http://localhost:8080/computer');
-    }else if (path == "/consoles.html"){
+    }else if (path.includes("/consoles.html")){
         this.getDataFromServer('http://localhost:8080/console');
-    }else if (path == "/keyboards.html"){
+    }else if (path.includes("/keyboards.html")){
         this.getDataFromServer('http://localhost:8080/keyboard');
-    }else if (path == "/mice.html"){
+    }else if (path.includes("/mice.html")){
         this.getDataFromServer('http://localhost:8080/mouse');
-    }else if (path == "/screens.html"){
+    }else if (path.includes("/screens.html")){
         this.getDataFromServer('http://localhost:8080/screen');
-    }else if (path == "/tvs.html"){
+    }else if (path.includes("/tvs.html")){
         this.getDataFromServer('http://localhost:8080/tv');
     }else{
         this.getDataFromServer('http://localhost:8080/items');

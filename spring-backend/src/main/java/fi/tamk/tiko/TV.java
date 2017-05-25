@@ -20,7 +20,7 @@ public class TV extends ShoppingItem {
 
     }
 
-    public TV(String name, double price, String resolution, int refreshRate, String size, String type, String aspectRatio, String connections, double weight, String picture, String tags) {
+    public TV(String name, double price, String resolution, int refreshRate, String size, String type, String aspectRatio, String connections, double weight, String picture, String tags, int quantity) {
         this.name = name;
         this.price = price;
         this.resolution = resolution;
@@ -32,6 +32,7 @@ public class TV extends ShoppingItem {
         this.weight = weight;
         this.picture = picture;
         this.tags = tags;
+        setQuantity(quantity);
     }
 
     @java.lang.Override
