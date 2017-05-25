@@ -82,9 +82,12 @@ class Item extends React.Component{
     render(){
         var camper = this.props.user;
         var price= parseFloat(camper.price).toFixed(2);
+        const divStyle = {
+            padding: 20 + 'px',
+        };
+      
         return(
-                
-                <div className="thumbnail">
+                <div className="thumbnail" style={divStyle}>
                 <img className="img-responsive" src={camper.picture} alt=""></img>
                     <div className="caption-full">
                         <h3 className="pull-right">{price} €</h3>

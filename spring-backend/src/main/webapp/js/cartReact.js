@@ -114,10 +114,18 @@ class ResultItem extends React.Component{
     render(){
         var camper = this.props.user;
         var link = "http://localhost:8080/items/"+camper.id;
+        const divStyle = {
+            padding: 20 + 'px',
+        };
+        const imageWrapper = {
+            width: 200 + 'px',
+            height: 200 + 'px',
+        }
         return(
            <div className="col-sm-4 col-lg-4 col-md-4">
-                        <div className="thumbnail">
-                        <img src={camper.picture} alt=""></img>
+                        <div className="thumbnail" style={divStyle}>
+                <div style={imageWrapper}>
+                        <img src={camper.picture} alt=""></img></div>
                             <div className="caption">
                                 <h4 className="pull-right">{camper.price} €</h4>
                                 <br></br>
