@@ -65,13 +65,9 @@ var App = React.createClass({
 var Result = React.createClass({
     render:function(){
         return(
-            <div className="container">
-            <div className="col-md-9">
-            <div className="row">
-            {<Item user={ this.props.result } />}
-            </div>
-            </div>
-            </div>
+            
+            <Item user={ this.props.result } />
+            
         );
     }
 });
@@ -86,21 +82,22 @@ class Item extends React.Component{
     render(){
         var camper = this.props.user;
         return(
-            <div className="col-sm-4 col-lg-4 col-md-4">
+           
                 <div className="thumbnail">
-                <img src={camper.picture} alt=""></img>
-                    <div className="caption">
+                <img className="img-responsive" src={camper.picture} alt=""></img>
+                    <div className="caption-full">
                         <h4 className="pull-right">{camper.price} €</h4>
-                        <br></br>
-                        <h4>{camper.name}
+                        <h4><a href="#">{camper.name}</a>
                         </h4>
-                        <p>This is a short description. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                        <p>See more snippets like these online store reviews at <a target="_blank" href="http://bootsnipp.com">Bootsnipp - http://bootsnipp.com</a>.</p>
+                        <p>Want to make these reviews work? Check out
+                            <strong><a href="http://maxoffsky.com/code-blog/laravel-shop-tutorial-1-building-a-review-system/">this building a review system tutorial</a>
+                            </strong>over at maxoffsky.com!</p>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum</p>
                     </div>
-                    <div classname="cartButton">
-                        <button id="checkoutbutton" onClick={this.handleSubmit}>Add to shopping cart</button>
-                    </div>
+                    
                 </div>
-            </div>
+            
         );
     }
 
