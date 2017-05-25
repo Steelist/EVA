@@ -14,7 +14,7 @@ function getCookie(cname) {
     return "";
 }
 
-class StampForm extends React.Component {
+class SearchForm extends React.Component {
     constructor(props) {
         super(props);
         this.state = {value: ''};
@@ -158,6 +158,6 @@ class ResultItem extends React.Component{
 }
 
 ReactDOM.render(
-<StampForm/>,
+<SearchForm/>,
     document.getElementById('searchResult')
 );
