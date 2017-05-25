@@ -16,13 +16,14 @@ public class Keyboard extends ShoppingItem {
 
     }
 
-    public Keyboard(String name, double price, double weight, int memory, boolean wireless, String picture) {
+    public Keyboard(String name, double price, double weight, int memory, boolean wireless, String picture, int quantity) {
         this.name = name;
         this.price = price;
         this.weight = weight;
         this.memory = memory;
         this.wireless = wireless;
         this.picture = picture;
+        setQuantity(quantity);
     }
 
     @java.lang.Override

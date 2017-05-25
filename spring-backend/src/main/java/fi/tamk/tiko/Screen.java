@@ -24,7 +24,7 @@ public class Screen extends ShoppingItem {
 
     }
 
-    public Screen(double screenSize, String packageSize, String name, double price, String resolution, int refreshRate, double wasteTime, double viewingAngle, String type, String aspectRatio, String connections, double weight, String picture, String tags) {
+    public Screen(double screenSize, String packageSize, String name, double price, String resolution, int refreshRate, double wasteTime, double viewingAngle, String type, String aspectRatio, String connections, double weight, String picture, String tags, int quantity) {
         this.screenSize = screenSize;
         this.packageSize = packageSize;
         this.name = name;
@@ -39,6 +39,7 @@ public class Screen extends ShoppingItem {
         this.weight = weight;
         this.picture = picture;
         setTags(tags);
+        setQuantity(quantity);
     }
 
     @java.lang.Override
