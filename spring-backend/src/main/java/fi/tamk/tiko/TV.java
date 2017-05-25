@@ -3,7 +3,7 @@ package fi.tamk.tiko;
 import javax.persistence.Entity;
 
 /**
- * Makes the tv object.
+ * Makes the tv object that extends shoppingItem.
  * 
  * @author Eerik Timonen
  * @author Vilho Stenman

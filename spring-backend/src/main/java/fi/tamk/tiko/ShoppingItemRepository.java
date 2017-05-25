@@ -8,15 +8,21 @@ import org.springframework.data.repository.CrudRepository;
 import org.springframework.transaction.annotation.Transactional;
 
 /**
- *
- * @author Erqq
+ * Makes the database interface for the shoppingitems.
+ * 
+ * @author Eerik Timonen
+ * @author Vilho Stenman
+ * @author Aleksi Hella
+ * @version 1.0
+ * @since 1.0
  */
 public interface ShoppingItemRepository extends JpaRepository<ShoppingItem, Long> {
 
     /**
-     *
-     * @param id
-     * @param quantity
+     * Updates the quantity of the items.
+     * 
+     * @param id item id
+     * @param quantity item quantity
      */
     @Modifying
     @Query("Update ShoppingItem t SET t.quantity=:quantity WHERE t.id=:id")
