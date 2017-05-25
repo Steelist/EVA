@@ -16,8 +16,6 @@ class LoginForm extends React.Component {
         event.preventDefault();
         var frm = $(document.myform2);
         var data = getFormData(frm);
-        
-        console.log(JSON.stringify(data));
         $.ajax({
         url: 'http://koti.tamk.fi/~c4vstenm/Login3.php',
         type:"POST",
@@ -31,20 +29,14 @@ class LoginForm extends React.Component {
                  document.cookie = "name="+data.name;
                  document.cookie = "expires="+now.toUTCString();
                  document.cookie = "path=/";
-                 console.log(document.cookie);
-                 console.log(data);
                  location.reload();
             }else{
-                console.log(document.cookie);
-                console.log(data);
                 alert("Wrong login credentials");
             }
 
         }.bind(this),
         error: function(xhr, status, err) {
-            console.log('error');
             var x = document.cookie;
-            console.log(x);
         }.bind(this)
         });
     }
@@ -59,7 +51,7 @@ class LoginForm extends React.Component {
                 <input id="username" type="text" name="username" placeholder="UserName"/>
 
                     Password:
-                <input id="password" type="text" name="password" placeholder="Password"/>
+                <input id="password" type="password" name="password" placeholder="Password"/>
 
                     <input id="loginbutton" type="submit" value="Login" />
                     <a href="register.html">Register</a>

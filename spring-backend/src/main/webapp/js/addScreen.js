@@ -16,7 +16,6 @@ class ScreenForm extends React.Component {
         event.preventDefault();
         var frm = $(document.myform);
         var data = getFormData(frm);
-        console.log(data);
 
         fetch('http://localhost:8080/screen', {
             method: 'POST',
@@ -27,7 +26,6 @@ class ScreenForm extends React.Component {
             mode: "cors"
         })
 
-        console.log(JSON.stringify(data).length);
     }
 
     render() {

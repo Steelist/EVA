@@ -108,7 +108,6 @@ class Item extends React.Component{
     handleSubmit(event){
             event.preventDefault();
             caller();
-            console.log(this.props.user.id);
             var data = this.props.user.id;
             var x = getCookie("cart");
             var now = new Date();
@@ -116,7 +115,6 @@ class Item extends React.Component{
             document.cookie = "cart="+x+","+data;
             document.cookie = "expires="+now.toUTCString();
             document.cookie = "path=/";
-            console.log(document.cookie);
             /*
             var URL = 'http://localhost:8080/updateCart';
             $.ajax({
