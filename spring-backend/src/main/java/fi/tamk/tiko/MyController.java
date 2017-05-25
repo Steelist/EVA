@@ -126,7 +126,97 @@ public class MyController {
            
         return temp;
     }
-
+  @CrossOrigin(origins = "*")
+    @RequestMapping(value = "/computer", method = RequestMethod.GET)
+    public List<ShoppingItem> getComputers() {
+        List<ShoppingItem> data=database.findAll();
+        List<ShoppingItem> temp=new ArrayList<>();
+           for(int i = 0; i<data.size();i++){
+              if(data.get(i) instanceof Computer){
+                  temp.add(data.get(i));
+              }
+              
+           }
+        return temp;
+    }
+     @CrossOrigin(origins = "*")
+    @RequestMapping(value = "/screen", method = RequestMethod.GET)
+    public List<ShoppingItem> getScreens() {
+        List<ShoppingItem> data=database.findAll();
+        List<ShoppingItem> temp=new ArrayList<>();
+           for(int i = 0; i<data.size();i++){
+              if(data.get(i) instanceof Screen){
+                  temp.add(data.get(i));
+              }
+              
+           }
+        return temp;
+    }
+    @CrossOrigin(origins = "*")
+    @RequestMapping(value = "/tv", method = RequestMethod.GET)
+    public List<ShoppingItem> getTV() {
+        List<ShoppingItem> data=database.findAll();
+        List<ShoppingItem> temp=new ArrayList<>();
+           for(int i = 0; i<data.size();i++){
+              if(data.get(i) instanceof TV){
+                  temp.add(data.get(i));
+              }
+              
+           }
+        return temp;
+    }
+     @CrossOrigin(origins = "*")
+    @RequestMapping(value = "/console", method = RequestMethod.GET)
+    public List<ShoppingItem> getConsole() {
+        List<ShoppingItem> data=database.findAll();
+        List<ShoppingItem> temp=new ArrayList<>();
+           for(int i = 0; i<data.size();i++){
+              if(data.get(i) instanceof Console){
+                  temp.add(data.get(i));
+              }
+              
+           }
+        return temp;
+    }
+      @CrossOrigin(origins = "*")
+    @RequestMapping(value = "/mouse", method = RequestMethod.GET)
+    public List<ShoppingItem> getMouse() {
+        List<ShoppingItem> data=database.findAll();
+        List<ShoppingItem> temp=new ArrayList<>();
+           for(int i = 0; i<data.size();i++){
+              if(data.get(i) instanceof Mouse){
+                  temp.add(data.get(i));
+              }
+              
+           }
+        return temp;
+    }
+      @CrossOrigin(origins = "*")
+    @RequestMapping(value = "/keyboard", method = RequestMethod.GET)
+    public List<ShoppingItem> getKeyboard() {
+        List<ShoppingItem> data=database.findAll();
+        List<ShoppingItem> temp=new ArrayList<>();
+           for(int i = 0; i<data.size();i++){
+              if(data.get(i) instanceof Keyboard){
+                  temp.add(data.get(i));
+              }
+              
+           }
+        return temp;
+    }
+      @CrossOrigin(origins = "*")
+    @RequestMapping(value = "/audio", method = RequestMethod.GET)
+    public List<ShoppingItem> getAudio() {
+        List<ShoppingItem> data=database.findAll();
+        List<ShoppingItem> temp=new ArrayList<>();
+           for(int i = 0; i<data.size();i++){
+              if(data.get(i) instanceof Audio){
+                  temp.add(data.get(i));
+              }
+              
+           }
+        return temp;
+    }
     @CrossOrigin(origins = "*")
     @RequestMapping(value = "/updateCart", method = RequestMethod.POST)
     public List<ShoppingItem> updateCart(@RequestBody CartItem c) {
