@@ -34,9 +34,6 @@ public class MyController {
     public MyController() {
 
     }
-
-    
-
     @RequestMapping({"/", "/home"})
     public String showHomePage(Map<String, Object> model) {
         return "index.html";
@@ -166,9 +163,9 @@ public class MyController {
         List<ShoppingItem> temp=new ArrayList<>();
            for(int i = 0; i<data.size();i++){
                if(!c.getTags().equals("")){
-               if (data.get(i).getTags().toLowerCase().replace(" ", "").contains(c.getTags().toLowerCase().replace(" ", ""))) {
-                   temp.add(data.get(i));
-               }
+                if (data.get(i).getTags().toLowerCase().replace(" ", "").contains(c.getTags().toLowerCase().replace(" ", ""))) {
+                    temp.add(data.get(i));
+                }
                }
            }
            
