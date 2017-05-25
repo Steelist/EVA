@@ -12,7 +12,7 @@ class ScreenForm extends React.Component {
     }
 
     handleSubmit(event) {
-        alert('A computer was submitted: ');
+        alert('A screen was submitted: ');
         event.preventDefault();
         var frm = $(document.myform);
         var data = getFormData(frm);

@@ -12,7 +12,7 @@ class TVForm extends React.Component {
     }
 
     handleSubmit(event) {
-        alert('A computer was submitted: ');
+        alert('A TV was submitted: ');
         event.preventDefault();
         var frm = $(document.myform);
         var data = getFormData(frm);
