@@ -48,6 +48,7 @@ var App = React.createClass({
     //showResult Method
     showResult: function(response) {
 
+        console.log(response);
         this.setState({
             data: response
         });
