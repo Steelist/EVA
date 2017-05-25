@@ -34,9 +34,6 @@ public class MyController {
     public MyController() {
 
     }
-
-    
-
     @RequestMapping({"/", "/home"})
     public String showHomePage(Map<String, Object> model) {
         return "index.html";
@@ -166,9 +163,9 @@ public class MyController {
         List<ShoppingItem> temp=new ArrayList<>();
            for(int i = 0; i<data.size();i++){
                if(!c.getTags().equals("")){
-               if (data.get(i).getTags().toLowerCase().replace(" ", "").contains(c.getTags().toLowerCase().replace(" ", ""))) {
-                   temp.add(data.get(i));
-               }
+                if (data.get(i).getTags().toLowerCase().replace(" ", "").contains(c.getTags().toLowerCase().replace(" ", ""))) {
+                    temp.add(data.get(i));
+                }
                }
            }
            
@@ -287,7 +284,7 @@ public class MyController {
 
         database.save(new TV("Samsung 65\" Ultra HD Smart", 1199.90, "3840 × 2160 Ultra HD", 0, " 1458,1 x 841,4 x 54,9 mm", "LED", "16:9", "Liitännät: 3 x HDMI, 2 x USB, komponentti-/komposiitti, digitaalinen audio ulos (optinen), Ethernet (LAN)\n"
                 + "Anynet+ (HDMI-CEC)\n"
-                + "HDMI 2.0a", 26.8, "https://cdn-c.verkkokauppa.com/1920/images/40/2_391265-3840x2480.jpg", "Samsung UE65KU6405 65\" Ultra HD Smart LED 16:9 3840 × 2160 Ultra HD ",10));
+                + "HDMI 2.0a", 26.8, "images/tv2.jpg", "Samsung UE65KU6405 65\" Ultra HD Smart LED 16:9 3840 × 2160 Ultra HD ",10));
         database.save(new TV("Sony 100\" Smart 4K Ultra HD", 74999.90, "3840 × 2160 Ultra HD", 1200, "225,8 x 130,3 x 9,8 cm", "LED", "16:9", "Liitännät: 4 x HDMI, 3 x USB, SCART, Ethernet, komposiittivideotulo, analoginen äänitulo, digitaalinen äänilähtö, kuulokeliitäntä\n"
                 + "HDCP 2.2\n"
                 + "BRAVIA Sync (HDMI-CEC)\n"
@@ -304,6 +301,7 @@ public class MyController {
         database.save(new Console("Nintendo Switch",349.90,0.398,32,"images/switch.jpeg",1, "Nintendo Switch Console"));
         database.save(new Mouse("Fuj:tech Optical Mouse",4.90,0,3,false,"images/hiiri1.jpeg",20, "Fuj:tech Optical Mouse"));
         database.save(new Mouse("3Dconnexion SpaceMouse",459.90,0,15,true,"images/hiiri2.jpg",5, "3Dconnexion SpaceMouse"));
+
         System.out.println("Url path GET \"localhost:8080/items\" shows all items currently in database");
         System.out.println("Url path GET \"localhost:8080/items/{itemId}\" shows specific item with matching id in database");
         System.out.println("Url path GET \"localhost:8080/index.html\" shows homepage where all items are shown");
