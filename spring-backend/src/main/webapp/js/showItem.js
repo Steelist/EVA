@@ -81,14 +81,15 @@ class Item extends React.Component{
 
     render(){
         var camper = this.props.user;
+        var price= parseFloat(camper.price).toFixed(2);
         return(
-
+                
                 <div className="thumbnail">
                 <img className="img-responsive" src={camper.picture} alt=""></img>
                     <div className="caption-full">
-                        <h4 className="pull-right">{camper.price} €</h4>
+                        <h3 className="pull-right">{price} €</h3>
                        
-                        <h4><a href="#">{camper.name}</a>
+                        <h4><h3 >{camper.name}</h3>
                             
                         </h4>
                         <div classname="cartButton">
