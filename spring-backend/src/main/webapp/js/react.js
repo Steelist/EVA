@@ -25,9 +25,7 @@ var App = React.createClass({
         };
     },
     componentDidMount(){
-
              var path = window.location.pathname;
-             console.log(path);
     if(path.includes("/audiodevice.html")){
         this.getDataFromServer('http://localhost:8080/audio');
     }else if (path.includes("/computers.html")){
@@ -48,8 +46,6 @@ var App = React.createClass({
     },
     //showResult Method
     showResult: function(response) {
-
-        console.log(response);
         this.setState({
             data: response
         });
@@ -130,10 +126,18 @@ class ResultItem extends React.Component{
     render(){
         var camper = this.props.user;
         var link = "http://localhost:8080/items/"+camper.id;
+        const divStyle = {
+            padding: 20 + 'px',
+        };
+        const imageWrapper = {
+            width: 200 + 'px',
+            height: 200 + 'px',
+        }
         return(
            <div className="col-sm-4 col-lg-4 col-md-4">
-                        <div className="thumbnail">
-                        <img src={camper.picture} alt=""></img>
+                        <div className="thumbnail" style={divStyle}>
+                <div style={imageWrapper}>
+                        <img src={camper.picture} alt="Item image"></img></div>
                             <div className="caption">
                                 <h4 className="pull-right">{camper.price.toFixed(2)} €</h4>
                                 <br></br>
@@ -151,7 +155,6 @@ class ResultItem extends React.Component{
     handleSubmit(event){
         event.preventDefault();
         caller();
-        console.log(this.props.user.id);
         var data = this.props.user.id;
         var x = getCookie("cart");
         var now = new Date();
@@ -159,7 +162,6 @@ class ResultItem extends React.Component{
         document.cookie = "cart="+x+","+data;
         document.cookie = "expires="+now.toUTCString();
         document.cookie = "path=/";
-        console.log(document.cookie);
         /*
         var URL = 'http://localhost:8080/updateCart';
         $.ajax({

@@ -31,7 +31,6 @@ var App = React.createClass({
     },
     componentDidMount(){
         this.getDataFromServer('http://localhost:8080/showShoppingCartWithItems/'+getCookie("cart").substring(1));
-        console.log(decodeURIComponent(document.cookie));
     },
     //showResult Method
     showResult: function(response) {
@@ -41,7 +40,6 @@ var App = React.createClass({
     },
     //making ajax call to get data from server
     getDataFromServer:function(URL){
-        console.log(getCookie("cart").substring(1));
         if(getCookie("cart").substring(0,1)===","){
             $.ajax({
                     type:"GET",
@@ -100,13 +98,9 @@ class ResultItem extends React.Component{
     }
     removeFromCart(event){
         event.preventDefault();
-        console.log(this.props.user.id);
         var x = getCookie("cart");
-        console.log(x);
-        console.log(x.includes(this.props.user.id));
         if(x.includes(this.props.user.id)){
             x = x.replace(","+this.props.user.id, '');
-            console.log(x);
             var now = new Date();
             now.setMonth( now.getMonth() + 1 );
             document.cookie = "cart="+x;
@@ -120,10 +114,18 @@ class ResultItem extends React.Component{
     render(){
         var camper = this.props.user;
         var link = "http://localhost:8080/items/"+camper.id;
+        const divStyle = {
+            padding: 20 + 'px',
+        };
+        const imageWrapper = {
+            width: 200 + 'px',
+            height: 200 + 'px',
+        }
         return(
            <div className="col-sm-4 col-lg-4 col-md-4">
-                        <div className="thumbnail">
-                        <img src={camper.picture} alt=""></img>
+                        <div className="thumbnail" style={divStyle}>
+                <div style={imageWrapper}>
+                        <img src={camper.picture} alt=""></img></div>
                             <div className="caption">
                                 <h4 className="pull-right">{camper.price} €</h4>
                                 <br></br>
