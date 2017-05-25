@@ -22,6 +22,9 @@ public class ShoppingItem{
 		this.tags=tags;
                 this.quantity=quantity;
 	}
+        public ShoppingItem(String tags){
+		this.tags=tags;
+	}
 	public long getId(){
 		return id;
 	}

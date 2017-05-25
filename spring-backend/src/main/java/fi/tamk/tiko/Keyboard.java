@@ -16,7 +16,7 @@ public class Keyboard extends ShoppingItem {
 
     }
 
-    public Keyboard(String name, double price, double weight, int memory, boolean wireless, String picture, int quantity) {
+    public Keyboard(String name, double price, double weight, int memory, boolean wireless, String picture, int quantity, String tags) {
         this.name = name;
         this.price = price;
         this.weight = weight;
@@ -24,6 +24,7 @@ public class Keyboard extends ShoppingItem {
         this.wireless = wireless;
         this.picture = picture;
         setQuantity(quantity);
+        setTags(tags);
     }
 
     @java.lang.Override
