@@ -12,7 +12,7 @@ var CheckButton = React.createClass({
     render:function(){
         return(
             <div>
-                <button onClick={this.checkout}>Checkout shoppingcart</button>
+                <button id="checkoutbutton" onClick={this.checkout}>Checkout shoppingcart</button>
             </div>
         );
     }

@@ -122,7 +122,7 @@ class ResultItem extends React.Component{
                                 </h4>
                                 <p>This is a short description. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
                             </div>
-                            <button onClick={this.removeFromCart}>Remove from cart</button>
+                            <button id="checkoutbutton" onClick={this.removeFromCart}>Remove from cart</button>
                         </div>
                     </div>
     );
