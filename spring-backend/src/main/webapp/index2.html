@@ -28,29 +28,14 @@
     <script type="text/babel" src="js/smallSearch.js"></script>
     <script type="text/babel" src="js/react.js"></script>
     <script type="text/babel" src="js/whoIsLoggedIn.js"></script>
+    <script type="text/babel" src="js/alert.js"> </script>
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
         <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
-<script>
-function customAlert(msg,duration)
-{
- var styler = document.createElement("div");
-  styler.setAttribute("style","border: solid 5px Red;width:auto;height:auto;top:50%;left:40%;background-color:#444;color:Silver;");
- styler.innerHTML = "<p>"+msg+"</p>";
- setTimeout(function()
- {
-   styler.parentNode.removeChild(styler);
- },duration);
- document.getElementById("alert").appendChild(styler);
-}
-  function caller()
-  {
-    customAlert("Tuote lisätty ostoskoriin","7000");
-  }
-  </script>
+
 </head>
 
 <body >
@@ -95,13 +80,12 @@ function customAlert(msg,duration)
                         <div id="login"></div>
 
                     </li>
-                    <li>
-                        <div id="alert"></div>
-                    </li>
+                 
                     <li>
                         <a href="shoppingCart.html">Shoppingcart</a>
-                       
+                         
                     </li>
+                    <li> <div id="alert"></div></li>
                 </ul>
             </div>
               
@@ -127,8 +111,9 @@ function customAlert(msg,duration)
 
             <div class="col-md-9">
 
-               
+             
                 <div id="search"></div>
+               
                 <div id="app"></div>
 
             </div>

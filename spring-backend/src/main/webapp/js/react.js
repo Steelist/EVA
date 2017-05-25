@@ -108,6 +108,7 @@ class ResultItem extends React.Component{
     }
     handleSubmit(event){
         event.preventDefault();
+        caller();
         console.log(this.props.user.id);
         var data = this.props.user.id;
         var x = getCookie("cart");
