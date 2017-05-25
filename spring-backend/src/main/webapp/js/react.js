@@ -25,9 +25,7 @@ var App = React.createClass({
         };
     },
     componentDidMount(){
-
              var path = window.location.pathname;
-             console.log(path);
     if(path.includes("/audiodevice.html")){
         this.getDataFromServer('http://localhost:8080/audio');
     }else if (path.includes("/computers.html")){
@@ -48,8 +46,6 @@ var App = React.createClass({
     },
     //showResult Method
     showResult: function(response) {
-
-        console.log(response);
         this.setState({
             data: response
         });
@@ -151,7 +147,6 @@ class ResultItem extends React.Component{
     handleSubmit(event){
         event.preventDefault();
         caller();
-        console.log(this.props.user.id);
         var data = this.props.user.id;
         var x = getCookie("cart");
         var now = new Date();
@@ -159,7 +154,6 @@ class ResultItem extends React.Component{
         document.cookie = "cart="+x+","+data;
         document.cookie = "expires="+now.toUTCString();
         document.cookie = "path=/";
-        console.log(document.cookie);
         /*
         var URL = 'http://localhost:8080/updateCart';
         $.ajax({

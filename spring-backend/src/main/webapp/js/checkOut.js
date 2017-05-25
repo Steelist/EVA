@@ -29,7 +29,6 @@ class CheckButton extends React.Component{
             dataType:"json",
             url: URL,
             success: function(response) {
-                console.log(response);
             }.bind(this)
         });
     }

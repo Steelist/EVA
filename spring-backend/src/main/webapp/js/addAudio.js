@@ -16,7 +16,6 @@ class AudioForm extends React.Component {
         event.preventDefault();
         var frm = $(document.myform);
         var data = getFormData(frm);
-        console.log(data);
 
         fetch('http://localhost:8080/audio', {
             method: 'POST',
@@ -27,7 +26,6 @@ class AudioForm extends React.Component {
             mode: "cors"
         })
 
-        console.log(JSON.stringify(data).length);
     }
 
     render() {

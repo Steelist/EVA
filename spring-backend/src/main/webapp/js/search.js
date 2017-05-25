@@ -37,9 +37,6 @@ class StampForm extends React.Component {
         var frm = $(document.myform);
         var data = getFormData(frm);
         var x = getCookie("search");
-        console.log(document.cookie);
-        console.log(x);
-        console.log(getCookie("search"));
         $.ajax({
             type:"POST",
             dataType:"json",
@@ -121,7 +118,6 @@ class ResultItem extends React.Component{
     handleSubmit(event){
         event.preventDefault();
         caller();
-        console.log(this.props.user.id);
         var data = this.props.user.id;
         var x = getCookie("cart");
         var now = new Date();
@@ -129,7 +125,6 @@ class ResultItem extends React.Component{
         document.cookie = "cart="+x+","+data;
         document.cookie = "expires="+now.toUTCString();
         document.cookie = "path=/";
-        console.log(document.cookie);
     }
 
     render(){

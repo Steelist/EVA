@@ -31,7 +31,6 @@ var App = React.createClass({
     },
     componentDidMount(){
         this.getDataFromServer('http://localhost:8080/showShoppingCartWithItems/'+getCookie("cart").substring(1));
-        console.log(decodeURIComponent(document.cookie));
     },
     //showResult Method
     showResult: function(response) {
@@ -41,7 +40,6 @@ var App = React.createClass({
     },
     //making ajax call to get data from server
     getDataFromServer:function(URL){
-        console.log(getCookie("cart").substring(1));
         if(getCookie("cart").substring(0,1)===","){
             $.ajax({
                     type:"GET",
@@ -100,13 +98,9 @@ class ResultItem extends React.Component{
     }
     removeFromCart(event){
         event.preventDefault();
-        console.log(this.props.user.id);
         var x = getCookie("cart");
-        console.log(x);
-        console.log(x.includes(this.props.user.id));
         if(x.includes(this.props.user.id)){
             x = x.replace(","+this.props.user.id, '');
-            console.log(x);
             var now = new Date();
             now.setMonth( now.getMonth() + 1 );
             document.cookie = "cart="+x;
