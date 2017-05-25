@@ -65,9 +65,9 @@ var App = React.createClass({
 var Result = React.createClass({
     render:function(){
         return(
-            
+
             <Item user={ this.props.result } />
-            
+
         );
     }
 });
@@ -82,7 +82,7 @@ class Item extends React.Component{
     render(){
         var camper = this.props.user;
         return(
-           
+
                 <div className="thumbnail">
                 <img className="img-responsive" src={camper.picture} alt=""></img>
                     <div className="caption-full">
@@ -100,7 +100,7 @@ class Item extends React.Component{
                     </div>
                          
                 </div>
-            
+ 
         );
     }
 
