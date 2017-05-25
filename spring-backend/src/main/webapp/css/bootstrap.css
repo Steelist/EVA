@@ -5013,6 +5013,7 @@ a.badge:focus {
 }
 .thumbnail > img,
 .thumbnail a > img {
+ 
   margin-right: auto;
   margin-left: auto;
 }
