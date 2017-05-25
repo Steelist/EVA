@@ -3,7 +3,7 @@ package fi.tamk.tiko;
 import javax.persistence.Entity;
 
 /**
- * 
+ * Makes the tv object.
  * 
  * @author Eerik Timonen
  * @author Vilho Stenman
