@@ -1,4 +1,4 @@
-class StampForm extends React.Component {
+class SearchForm extends React.Component {
     constructor(props) {
         super(props);
         this.state = {value: ''};
@@ -61,6 +61,6 @@ function getFormData($form){
 
 
 ReactDOM.render(
-<StampForm/>,
+<SearchForm/>,
     document.getElementById('search')
 );
