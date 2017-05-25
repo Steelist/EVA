@@ -311,6 +311,18 @@ public class MyController {
         System.out.println("Url path POST \"localhost:8080/computer\" adds new computer with given json data");
         System.out.println("Url path POST \"localhost:8080/tv\" adds new TV with given json data");
         System.out.println("Url path POST \"localhost:8080/screen\" adds new screen with given json data");
+        System.out.println("Url path POST \"localhost:8080/audio\" adds new audio with given json data");
+        System.out.println("Url path POST \"localhost:8080/keyboard\" adds new keyboard with given json data");
+        System.out.println("Url path POST \"localhost:8080/mouse\" adds new mouse with given json data");
+        System.out.println("Url path POST \"localhost:8080/console\" adds new console with given json data");
+        System.out.println("Url path GET \"localhost:8080/audio\" shows audio items currently in database");
+        System.out.println("Url path GET \"localhost:8080/computer\" shows computer items currently in database");
+        System.out.println("Url path GET \"localhost:8080/console\" shows console items currently in database");
+        System.out.println("Url path GET \"localhost:8080/keyboard\" shows keyboard items currently in database");
+        System.out.println("Url path GET \"localhost:8080/mouse\" shows mouse items currently in database");
+        System.out.println("Url path GET \"localhost:8080/screen\" shows screen items currently in database");
+        System.out.println("Url path GET \"localhost:8080/tv\" shows tv items currently in database");
+        System.out.println("Url path POST \"localhost:8080/updateCart\" updates the shopping cart");
         shoppingCart = new ArrayList();
     }
 }
