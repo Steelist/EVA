@@ -14,7 +14,7 @@ class LoginForm extends React.Component {
 
     handleSubmit(event) {
         event.preventDefault();
-        var frm = $(document.myform);
+        var frm = $(document.myform2);
         var data = getFormData(frm);
         
         console.log(JSON.stringify(data));
@@ -53,7 +53,7 @@ class LoginForm extends React.Component {
         if(getCookie("name")==="Not logged in"){
             return (
 
-                    <form onSubmit={this.handleSubmit} name="myform">
+                    <form onSubmit={this.handleSubmit} name="myform2">
                     UserName:
 
                 <input id="username" type="text" name="username" placeholder="UserName"/>

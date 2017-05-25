@@ -16,13 +16,14 @@ public class Mouse extends ShoppingItem {
 
     }
 
-    public Mouse(String name, double price, double weight, int buttons, boolean wireless, String picture) {
+    public Mouse(String name, double price, double weight, int buttons, boolean wireless, String picture, int quantity) {
         this.name = name;
         this.price = price;
         this.weight = weight;
         this.buttons = buttons;
         this.wireless = wireless;
         this.picture = picture;
+        setQuantity(quantity);
     }
 
     @java.lang.Override
