@@ -1,4 +1,5 @@
 var MainBox  = React.createClass({
+
     render:function(){
         return(
             <App/>
@@ -84,6 +85,7 @@ class ResultItem extends React.Component{
         super(props);
         this.handleSubmit = this.handleSubmit.bind(this);
     }
+
 
     render(){
         var camper = this.props.user;
