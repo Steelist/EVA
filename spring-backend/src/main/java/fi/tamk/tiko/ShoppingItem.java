@@ -15,9 +15,7 @@ public class ShoppingItem {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
-
     private String tags;
-
     private int quantity;
 
     /**
