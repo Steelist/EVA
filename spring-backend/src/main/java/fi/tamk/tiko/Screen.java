@@ -285,8 +285,9 @@ public class Screen extends ShoppingItem {
     }
 
     /**
-     *
-     * @return
+     * Gets the connections.
+     * 
+     * @return connections
      */
     public String getConnections() {
         return connections;
