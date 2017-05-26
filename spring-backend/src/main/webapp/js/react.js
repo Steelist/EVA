@@ -1,3 +1,6 @@
+/*
+Sets localstorage's variable true and reloads the view.
+ */
 if(!localStorage["alertdisplayed"]) {
     var now = new Date();
     now.setMonth( now.getMonth() + 1 );
@@ -8,6 +11,9 @@ if(!localStorage["alertdisplayed"]) {
     localStorage["alertdisplayed"] = true
 }
 
+/*
+Wraps the whole element.
+ */
 var MainBox  = React.createClass({
 
     render:function(){
@@ -17,6 +23,9 @@ var MainBox  = React.createClass({
     }
 });
 
+/*
+Functions as the main view.
+ */
 var App = React.createClass({
     //setting up initial state
     getInitialState:function(){
@@ -24,6 +33,10 @@ var App = React.createClass({
             data:[]
         };
     },
+
+    /*
+    One of the component's lifecycle methods. Decides which views to show depending on user clicks.
+     */
     componentDidMount(){
              var path = window.location.pathname;
     if(path.includes("/audiodevice.html")){
@@ -44,13 +57,21 @@ var App = React.createClass({
         this.getDataFromServer('http://localhost:8080/items');
     }
     },
-    //showResult Method
+    /*
+    Method to set data.
+
+    @param response Result data.
+     */
     showResult: function(response) {
         this.setState({
             data: response
         });
     },
-    //making ajax call to get data from server
+    /*
+    Makes ajax call to get data from server.
+
+    @param URL Url to get the data from.
+     */
     getDataFromServer:function(URL){
         $.ajax({
             type:"GET",
@@ -73,6 +94,9 @@ var App = React.createClass({
     }
 });
 
+/*
+Works as the result template.
+ */
 var Result = React.createClass({
     render:function(){
         var result = this.props.result.map(function(result,index){
@@ -90,6 +114,11 @@ var Result = React.createClass({
     }
 });
 
+/*
+Gets cookie's name.
+
+@param cname Cookie's name.
+ */
 function getCookie(cname) {
     var name = cname + "=";
     var decodedCookie = decodeURIComponent(document.cookie);
@@ -106,6 +135,9 @@ function getCookie(cname) {
     return "";
 }
 
+/*
+Handles the submits and clicks and renders the item.
+ */
 class ResultItem extends React.Component{
     constructor(props){
         super(props);
@@ -113,6 +145,11 @@ class ResultItem extends React.Component{
         this.handleClick = this.handleClick.bind(this);
     }
 
+    /*
+    Handles click on the item's title.
+
+    @param event Event for clicking an item's title.
+     */
     handleClick(event){
         var now = new Date();
         now.setMonth( now.getMonth() + 1 );
@@ -122,7 +159,9 @@ class ResultItem extends React.Component{
         window.location.replace("showitem.html");
     }
 
-
+    /*
+    Renders the element.
+     */
     render(){
         var camper = this.props.user;
         var link = "http://localhost:8080/items/"+camper.id;
@@ -152,6 +191,12 @@ class ResultItem extends React.Component{
                     </div>
     );
     }
+
+    /*
+    Handles the submit click.
+
+    @param event Event for clicking submit button.
+     */
     handleSubmit(event){
         event.preventDefault();
         caller();
@@ -176,8 +221,9 @@ class ResultItem extends React.Component{
     }
 }
 
-
-
+/*
+If admin is logged in shows this section that allows adding items.
+ */
 class AdminStuff extends React.Component{
     render(){
         if(getCookie("name")==="admin"){
@@ -221,5 +267,12 @@ class AdminStuff extends React.Component{
     }
 }
 
+/*
+Renders main view adding to element by the id of app.
+ */
 ReactDOM.render(<MainBox />, document.getElementById('app'));
+
+/*
+ Renders admin view adding to element by the id of admin.
+ */
 ReactDOM.render(<AdminStuff />, document.getElementById('admin'));

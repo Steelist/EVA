@@ -1,3 +1,6 @@
+/*
+Handles clicks and state changes.
+ */
 class SearchForm extends React.Component {
     constructor(props) {
         super(props);
@@ -7,17 +10,29 @@ class SearchForm extends React.Component {
         this.handleSubmit = this.handleSubmit.bind(this);
     }
 
+    /*
+    Changes the state to the event target's value.
+
+    @param event Event for changing target value.
+     */
     handleChange(event) {
         this.setState({value: event.target.value});
     }
 
+    /*
+    Sets the response as the data variable's value.
+
+    @param response Response data.
+     */
     showResult(response) {
         this.setState({
             data: response
         });
     }
 
-
+    /*
+    Gets data from the server.
+     */
     getDataFromServer(){
         var frm = $(document.myform);
         var data = getFormData(frm);
@@ -30,11 +45,19 @@ class SearchForm extends React.Component {
 
     }
 
+    /*
+    Handles submit event.
+
+    @param event Event for clicking submit.
+     */
     handleSubmit(event) {
         event.preventDefault();
         this.getDataFromServer();
     }
 
+    /*
+    Render the element.
+     */
     render() {
         return (
             <div>
@@ -48,6 +71,11 @@ class SearchForm extends React.Component {
     }
 }
 
+/*
+ Creates JavaScript array of objects ready to be encoded as a JSON string.
+
+ @param $form Form element.
+ */
 function getFormData($form){
     var unindexed_array = $form.serializeArray();
     var indexed_array = {};
@@ -59,7 +87,9 @@ function getFormData($form){
     return indexed_array;
 }
 
-
+/*
+ Renders content and attaches it to an element with an id of search.
+ */
 ReactDOM.render(
 <SearchForm/>,
     document.getElementById('search')

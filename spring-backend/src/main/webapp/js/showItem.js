@@ -1,3 +1,8 @@
+/*
+Gets cookie's name.
+
+@param cname Cookies's name.
+ */
 function getCookie(cname) {
     var name = cname + "=";
     var decodedCookie = decodeURIComponent(document.cookie);
@@ -14,6 +19,9 @@ function getCookie(cname) {
     return "";
 }
 
+/*
+Renders the whole element.
+ */
 var MainBox  = React.createClass({
 
     render:function(){
@@ -23,23 +31,40 @@ var MainBox  = React.createClass({
     }
 });
 
+/*
+Gets data and renders it.
+ */
 var App = React.createClass({
-    //setting up initial state
+    /*
+    Sets up initial state.
+     */
     getInitialState:function(){
         return{
             data:[]
         };
     },
+
+    /*
+    One of the component's lifecycle methods, gets data from the given url.
+     */
     componentDidMount(){
         this.getDataFromServer('http://localhost:8080/items/'+getCookie("item"));
     },
+
+    /*
+    Shows the results.
+
+    @param response Data fetched via given url.
+     */
     showResult(response) {
 
         this.setState({
             data: response
         });
     },
-        //making ajax call to get data from server
+    /*
+     Makes ajax call to get data from server.
+      */
     getDataFromServer:function(URL){
         $.ajax({
             type:"GET",
@@ -62,6 +87,9 @@ var App = React.createClass({
     }
 });
 
+/*
+Renders the result.
+ */
 var Result = React.createClass({
     render:function(){
         return(
@@ -72,13 +100,18 @@ var Result = React.createClass({
     }
 });
 
+/*
+Handles submit and renders item.
+ */
 class Item extends React.Component{
     constructor(props){
         super(props);
         this.handleSubmit = this.handleSubmit.bind(this);
     }
 
-
+    /*
+    Renders item.
+     */
     render(){
         var camper = this.props.user;
         var price= parseFloat(camper.price).toFixed(2);
@@ -109,6 +142,11 @@ class Item extends React.Component{
         );
     }
 
+    /*
+    Handles submit click.
+
+    @param event Event for clicking submit button.
+     */
     handleSubmit(event){
             event.preventDefault();
             caller();
@@ -134,4 +172,7 @@ class Item extends React.Component{
 
 }
 
+/*
+ Renders content and attaches it to an element with an id of item.
+ */
 ReactDOM.render(<MainBox />, document.getElementById('item'));

@@ -1,3 +1,8 @@
+/*
+Gets cookie's name.
+
+@param cname Cookie's name.
+ */
 function getCookie(cname) {
     var name = cname + "=";
     var decodedCookie = decodeURIComponent(document.cookie);
@@ -14,7 +19,9 @@ function getCookie(cname) {
     return "";
 }
 
-
+/*
+Handles logout.
+ */
 class LoginState extends React.Component {
     constructor(props) {
         super(props);
@@ -23,6 +30,9 @@ class LoginState extends React.Component {
     componentDidMount(){
     }
 
+    /*
+    Logs out the user.
+     */
     logout(){
         var now = new Date();
         now.setMonth( now.getMonth() + 1 );
@@ -33,6 +43,9 @@ class LoginState extends React.Component {
         location.reload();
     }
 
+    /*
+    Renders the element.
+     */
     render() {
         var x = getCookie("name");
         if(x==="Not logged in"){
@@ -53,6 +66,9 @@ class LoginState extends React.Component {
 
 }
 
+/*
+ Renders content and attaches it to an element with an id of loggedIn.
+ */
 ReactDOM.render(
 <LoginState/>,
     document.getElementById('loggedIn')

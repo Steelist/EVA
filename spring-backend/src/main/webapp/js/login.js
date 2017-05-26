@@ -1,3 +1,6 @@
+/*
+Handles the login.
+ */
 class LoginForm extends React.Component {
     constructor(props) {
         super(props);
@@ -7,11 +10,20 @@ class LoginForm extends React.Component {
         this.handleSubmit = this.handleSubmit.bind(this);
     }
 
+    /*
+    Sets the state to the event target's value.
 
+    @param event Event for changing values.
+     */
     handleChange(event) {
         this.setState({value: event.target.value});
     }
 
+    /*
+    Handles the submit click.
+
+    @param event Event for clicking submit button.
+     */
     handleSubmit(event) {
         event.preventDefault();
         var frm = $(document.myform2);
@@ -41,6 +53,9 @@ class LoginForm extends React.Component {
         });
     }
 
+    /*
+    Renders the login element.
+     */
     render() {
         if(getCookie("name")==="Not logged in"){
             return (
@@ -65,6 +80,11 @@ class LoginForm extends React.Component {
     }
 }
 
+/*
+Gets cookie's name.
+
+@param cname Cookie's name.
+ */
 function getCookie(cname) {
     var name = cname + "=";
     var decodedCookie = decodeURIComponent(document.cookie);
@@ -81,6 +101,11 @@ function getCookie(cname) {
     return "";
 }
 
+/*
+ Creates JavaScript array of objects ready to be encoded as a JSON string.
+
+ @param $form Form element.
+ */
 function getFormData($form){
     var unindexed_array = $form.serializeArray();
     var indexed_array = {};
@@ -92,6 +117,9 @@ function getFormData($form){
     return indexed_array;
 }
 
+/*
+ Renders content and attaches it to an element with an id of login.
+ */
 ReactDOM.render(
 <LoginForm/>,
     document.getElementById('login')

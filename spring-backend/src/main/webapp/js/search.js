@@ -1,3 +1,8 @@
+/*
+Gets cookie's name.
+
+@param cname Cookie's name.
+ */
 function getCookie(cname) {
     var name = cname + "=";
     var decodedCookie = decodeURIComponent(document.cookie);
@@ -14,6 +19,9 @@ function getCookie(cname) {
     return "";
 }
 
+/*
+Handles the state changes.
+ */
 class SearchForm extends React.Component {
     constructor(props) {
         super(props);
@@ -22,17 +30,31 @@ class SearchForm extends React.Component {
         this.handleChange = this.handleChange.bind(this);
     }
 
+    /*
+    Changes the state to the modified event target's value.
+
+    @param event Event for changing the target value.
+     */
     handleChange(event) {
         this.setState({value: event.target.value});
     }
 
+    /*
+    Shows the response data.
+
+    @param response Response data.
+     */
     showResult(response) {
         this.setState({
             data: response
         });
     }
 
+    /*
+    Gets data from the server.
 
+    @param URL Url to get the data from.
+     */
     getDataFromServer(URL){
         var frm = $(document.myform);
         var data = getFormData(frm);
@@ -54,6 +76,9 @@ class SearchForm extends React.Component {
         });
     }
 
+    /*
+    One of the component's lifecycles methods. Handles initialization methods.
+     */
     componentDidMount() {
         event.preventDefault();
         this.getDataFromServer('http://localhost:8080/itemsSearch');
@@ -61,6 +86,9 @@ class SearchForm extends React.Component {
         var data = getFormData(frm);
     }
 
+    /*
+    Renders the element.
+     */
     render() {
         return (
             <div>
@@ -70,6 +98,11 @@ class SearchForm extends React.Component {
     }
 }
 
+/*
+ Creates JavaScript array of objects ready to be encoded as a JSON string.
+
+ @param $form Form element.
+ */
 function getFormData($form){
     var unindexed_array = $form.serializeArray();
     var indexed_array = {};
@@ -81,7 +114,9 @@ function getFormData($form){
     return indexed_array;
 }
 
-
+/*
+Works as the result template.
+ */
 var Result = React.createClass({
     render:function(){
         var result = this.props.result.map(function(result,index){
@@ -99,6 +134,9 @@ var Result = React.createClass({
     }
 });
 
+/*
+Handles the submit and clicks and renders the item.
+ */
 class ResultItem extends React.Component{
     constructor(props){
         super(props);
@@ -106,6 +144,11 @@ class ResultItem extends React.Component{
         this.handleClick = this.handleClick.bind(this);
     }
 
+    /*
+    Shows the clicked item.
+
+    @param event Event for clicking item title.
+     */
     handleClick(event){
         var now = new Date();
         now.setMonth( now.getMonth() + 1 );
@@ -115,6 +158,11 @@ class ResultItem extends React.Component{
         window.location.replace("showitem.html");
     }
 
+    /*
+    Handles submit clicking.
+
+    @param event Event for clicking submit button.
+     */
     handleSubmit(event){
         event.preventDefault();
         caller();
@@ -127,6 +175,9 @@ class ResultItem extends React.Component{
         document.cookie = "path=/";
     }
 
+    /*
+    Renders the item.
+     */
     render() {
         var camper = this.props.user;
         const divStyle = {
@@ -166,6 +217,9 @@ class ResultItem extends React.Component{
     }
 }
 
+/*
+ Renders content and attaches it to an element with an id of searchResult.
+ */
 ReactDOM.render(
 <SearchForm/>,
     document.getElementById('searchResult')
