@@ -1,8 +1,13 @@
 package fi.tamk.tiko;
 
 /**
- *
- * @author Erqq
+ * Makes the CartItem object.
+ * 
+ * @author Eerik Timonen
+ * @author Vilho Stenman
+ * @author Aleksi Hella
+ * @version 1.0
+ * @since 1.0
  */
 public class CartItem {
 
@@ -36,7 +41,7 @@ public class CartItem {
     }
 
     /**
-     * Constructor.
+     * Empty constructor.
      * 
      */
     public CartItem() {
