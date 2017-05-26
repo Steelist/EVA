@@ -22,8 +22,13 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.transaction.annotation.Transactional;
 
 /**
+ * Controls the back end. Manages the databases.
  *
- * @author Erqq
+ * @author Eerik Timonen
+ * @author Vilho Stenman
+ * @author Aleksi Hella
+ * @version 1.0
+ * @since 1.0
  */
 @RestController
 public class MyController {
@@ -34,7 +39,7 @@ public class MyController {
 
     /**
      * Constructor for the MyController.
-     * 
+     *
      */
     public MyController() {
 
@@ -42,9 +47,9 @@ public class MyController {
 
     /**
      * Gets the URL for the home page.
-     * 
+     *
      * @param model
-     * @return  the URL for the home page.
+     * @return the URL for the home page.
      */
     @RequestMapping({"/", "/home"})
     public String showHomePage(Map<String, Object> model) {
@@ -52,8 +57,8 @@ public class MyController {
     }
 
     /**
-     * 
-     * 
+     *
+     *
      * @param c
      */
     @CrossOrigin(origins = "*")
@@ -64,91 +69,91 @@ public class MyController {
 
     /**
      * Saves a new computer to the database.
-     * 
+     *
      * @param c computer object as JSON.
      */
     @CrossOrigin(origins = "*")
-    @RequestMapping(value = "/computer", method = RequestMethod.POST, headers = 
-            {"content-type=application/json"})
+    @RequestMapping(value = "/computer", method = RequestMethod.POST, headers
+            = {"content-type=application/json"})
     public void saveComputer(@RequestBody Computer c) {
         database.save(c);
     }
 
     /**
      * Saves a new mouse to the database.
-     * 
+     *
      * @param c mouse object as JSON.
      */
     @CrossOrigin(origins = "*")
-    @RequestMapping(value = "/mouse", method = RequestMethod.POST, headers = 
-            {"content-type=application/json"})
+    @RequestMapping(value = "/mouse", method = RequestMethod.POST, headers
+            = {"content-type=application/json"})
     public void saveMouse(@RequestBody Mouse c) {
         database.save(c);
     }
 
     /**
      * Saves a new audio to the database.
-     * 
+     *
      * @param c audio object as JSON.
      */
     @CrossOrigin(origins = "*")
-    @RequestMapping(value = "/audio", method = RequestMethod.POST, headers = 
-            {"content-type=application/json"})
+    @RequestMapping(value = "/audio", method = RequestMethod.POST, headers
+            = {"content-type=application/json"})
     public void saveAudio(@RequestBody Audio c) {
         database.save(c);
     }
 
     /**
      * Saves a new keyboard to the database.
-     * 
+     *
      * @param c keyboard object as JSON.
      */
     @CrossOrigin(origins = "*")
-    @RequestMapping(value = "/keyboard", method = RequestMethod.POST, headers = 
-            {"content-type=application/json"})
+    @RequestMapping(value = "/keyboard", method = RequestMethod.POST, headers
+            = {"content-type=application/json"})
     public void saveKeyboard(@RequestBody Keyboard c) {
         database.save(c);
     }
 
     /**
      * Saves a new console to the database.
-     * 
+     *
      * @param c console object as JSON.
      */
     @CrossOrigin(origins = "*")
-    @RequestMapping(value = "/console", method = RequestMethod.POST, headers = 
-            {"content-type=application/json"})
+    @RequestMapping(value = "/console", method = RequestMethod.POST, headers
+            = {"content-type=application/json"})
     public void saveConsole(@RequestBody Console c) {
         database.save(c);
     }
 
     /**
      * Saves a new tv to the database.
-     * 
+     *
      * @param c tv object as JSON.
      */
     @CrossOrigin(origins = "*")
-    @RequestMapping(value = "/tv", method = RequestMethod.POST, headers = 
-            {"content-type=application/json"})
+    @RequestMapping(value = "/tv", method = RequestMethod.POST, headers
+            = {"content-type=application/json"})
     public void saveTV(@RequestBody TV c) {
         database.save(c);
     }
 
     /**
      * Saves a new screen to the database.
-     * 
+     *
      * @param c screen object as JSON.
      */
     @CrossOrigin(origins = "*")
-    @RequestMapping(value = "/screen", method = RequestMethod.POST, headers =
-            {"content-type=application/json"})
+    @RequestMapping(value = "/screen", method = RequestMethod.POST, headers
+            = {"content-type=application/json"})
     public void saveScreen(@RequestBody Screen c) {
         database.save(c);
     }
 
     /**
      * Gets all items from the database.
-     * 
+     *
      * @return all items
      */
     @CrossOrigin(origins = "*")
@@ -160,7 +165,7 @@ public class MyController {
 
     /**
      * Gets the items that are in the shopping cart
-     * 
+     *
      * @return shopping cart items
      */
     @CrossOrigin(origins = "*")
@@ -171,14 +176,14 @@ public class MyController {
     }
 
     /**
-     * 
-     * 
-     * @param list
-     * @return
+     * Returns the items that are in the user's shopping cart.
+     *
+     * @param list string list
+     * @return the items that are in the cart
      */
     @CrossOrigin(origins = "*")
-    @RequestMapping(value = "/showShoppingCartWithItems/{list}", method = 
-            RequestMethod.GET)
+    @RequestMapping(value = "/showShoppingCartWithItems/{list}", method
+            = RequestMethod.GET)
     public List<ShoppingItem> getCartWithItems(@PathVariable String list) {
         List<String> items = Arrays.asList(list.split("\\s*,\\s*"));
         List<Integer> intList = new ArrayList();
@@ -196,9 +201,10 @@ public class MyController {
     }
 
     /**
-     * 
-     * @param list
-     * @return
+     * Reduces the quantity of the items in the shopping cart by 1
+     *
+     * @param list string list
+     * @return items in the shopping cart
      */
     @CrossOrigin(origins = "*")
     @RequestMapping(value = "/checkOutItems/{list}", method = RequestMethod.GET)
@@ -215,8 +221,7 @@ public class MyController {
         for (int i = 0; i < intList.size(); i++) {
             System.out.println(database.findOne((long) intList.get(i))
                     .getQuantity());
-            database.updateCount((long) intList.get(i), database.findOne((long)
-                    intList.get(i)).getQuantity() - 1);
+            database.updateCount((long) intList.get(i), database.findOne((long) intList.get(i)).getQuantity() - 1);
         }
 
         return shoppingList;
@@ -224,9 +229,9 @@ public class MyController {
 
     /**
      * Gets the item with the given id.
-     * 
-     * @param itemId    items id number.
-     * @return  the item.
+     *
+     * @param itemId items id number.
+     * @return the item.
      */
     @CrossOrigin(origins = "*")
     @RequestMapping(value = "/items/{itemId}", method = RequestMethod.GET)
@@ -237,9 +242,9 @@ public class MyController {
 
     /**
      * Search items from the database with the given string.
-     * 
-     * @param c     the string which is used to search
-     * @return      searched items
+     *
+     * @param c the string which is used to search
+     * @return searched items
      */
     @CrossOrigin(origins = "*")
     @RequestMapping(value = "/itemsSearch", method = RequestMethod.POST)
@@ -262,7 +267,7 @@ public class MyController {
 
     /**
      * Gets all the computers from the database.
-     * 
+     *
      * @return computers
      */
     @CrossOrigin(origins = "*")
@@ -278,9 +283,10 @@ public class MyController {
         }
         return temp;
     }
+
     /**
      * Gets all the screens from the database.
-     * 
+     *
      * @return screens
      */
     @CrossOrigin(origins = "*")
@@ -299,7 +305,7 @@ public class MyController {
 
     /**
      * Gets all the tvs from the database.
-     * 
+     *
      * @return tvs
      */
     @CrossOrigin(origins = "*")
@@ -318,7 +324,7 @@ public class MyController {
 
     /**
      * Gets all the consoles from the database.
-     * 
+     *
      * @return consoles
      */
     @CrossOrigin(origins = "*")
@@ -337,7 +343,7 @@ public class MyController {
 
     /**
      * Gets all the mouses from the database.
-     * 
+     *
      * @return mouses
      */
     @CrossOrigin(origins = "*")
@@ -356,7 +362,7 @@ public class MyController {
 
     /**
      * Gets all the keyboards from the database.
-     * 
+     *
      * @return keyboards
      */
     @CrossOrigin(origins = "*")
@@ -375,7 +381,7 @@ public class MyController {
 
     /**
      * Gets all the audio devices from the database.
-     * 
+     *
      * @return audio devices
      */
     @CrossOrigin(origins = "*")
@@ -391,10 +397,12 @@ public class MyController {
         }
         return temp;
     }
+
     /**
-     * 
-     * @param c
-     * @return 
+     * Updates the cart. Adds new item to the cart database.
+     *
+     * @param c item which is added to the cart
+     * @return the shopping cart list.
      */
     @CrossOrigin(origins = "*")
     @RequestMapping(value = "/updateCart", method = RequestMethod.POST)
@@ -405,9 +413,9 @@ public class MyController {
     }
 
     /**
-     * Fills the database with dumb data and prints the backends 
-     * urls to console.
-     * 
+     * Fills the database with dumb data and prints the backends urls to
+     * console.
+     *
      */
     public void fillWithTestdata() {
 
