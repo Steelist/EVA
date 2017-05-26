@@ -124,6 +124,7 @@ class Item extends React.Component{
                 <img className="img-responsive" src={camper.picture} alt=""></img>
                     <div className="caption-full">
                         <h3 className="pull-right">{price} €</h3>
+                        <h3 className="pull-right">In stock:({camper.quantity})</h3>
                        
                         <h4><h3 >{camper.name}</h3>
                             
