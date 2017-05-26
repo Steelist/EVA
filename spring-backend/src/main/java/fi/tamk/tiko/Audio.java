@@ -3,8 +3,13 @@ package fi.tamk.tiko;
 import javax.persistence.Entity;
 
 /**
- *
- * @author Erqq
+ * Makes the audio object that extends shoppingItem.
+ * 
+ * @author Eerik Timonen
+ * @author Vilho Stenman
+ * @author Aleksi Hella
+ * @version 1.0
+ * @since 1.0
  */
 @Entity
 public class Audio extends ShoppingItem {
