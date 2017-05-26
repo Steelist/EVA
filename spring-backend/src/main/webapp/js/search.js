@@ -144,6 +144,8 @@ class ResultItem extends React.Component{
                         <div style={imageWrapper}><img src={camper.picture} alt=""></img></div>
                             <div className="caption">
                                 <h4 className="pull-right">{camper.price} €</h4>
+                                
+                                
                                 <br></br>
                                 <h4><a href="#" onClick={this.handleClick}>{camper.name}</a>
                                 </h4>
