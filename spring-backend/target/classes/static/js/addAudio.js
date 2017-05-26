@@ -1,3 +1,6 @@
+/*
+ Creates the Audio form.
+ */
 class AudioForm extends React.Component {
     constructor(props) {
         super(props);
@@ -7,16 +10,25 @@ class AudioForm extends React.Component {
         this.handleSubmit = this.handleSubmit.bind(this);
     }
 
+    /*
+    Sets current state to match the event target's value.
+
+    @param event Event of changing form data.
+     */
     handleChange(event) {
         this.setState({value: event.target.value});
     }
 
+    /*
+    Handles the event of submitting the inserted data by sending a post request with stringified form data.
+
+    @param event Event of clicking submit button.
+     */
     handleSubmit(event) {
         alert('An audio was submitted: ');
         event.preventDefault();
         var frm = $(document.myform);
         var data = getFormData(frm);
-        console.log(data);
 
         fetch('http://localhost:8080/audio', {
             method: 'POST',
@@ -27,9 +39,11 @@ class AudioForm extends React.Component {
             mode: "cors"
         })
 
-        console.log(JSON.stringify(data).length);
     }
 
+    /*
+    Renders the form.
+     */
     render() {
         return (
             <form onSubmit={this.handleSubmit} name="myform">
@@ -48,6 +62,9 @@ class AudioForm extends React.Component {
             Channels:<br/>
         <input type="number" name="channels" defaultValue="6"/>
             <br/>
+            Quantity:<br/>
+        <input type="number" name="quantity" defaultValue="10"/>
+            <br/>
             Picture:<br/>
         <input type="text" name="picture" defaultValue="http://www.novelupdates.com/img/noimagefound.jpg"/>
             <br/>
@@ -60,6 +77,11 @@ class AudioForm extends React.Component {
     }
 }
 
+/*
+Creates JavaScript array of objects ready to be encoded as a JSON string.
+
+ @param $form Form element.
+ */
 function getFormData($form){
     var unindexed_array = $form.serializeArray();
     var indexed_array = {};
@@ -71,6 +93,9 @@ function getFormData($form){
     return indexed_array;
 }
 
+/*
+ Renders form and attaches it to an element with an id of root.
+ */
 ReactDOM.render(
 <AudioForm/>,
     document.getElementById('root')

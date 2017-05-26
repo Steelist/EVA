@@ -1,4 +1,7 @@
-class StampForm extends React.Component {
+/*
+Handles clicks and state changes.
+ */
+class SearchForm extends React.Component {
     constructor(props) {
         super(props);
         this.state = {value: ''};
@@ -7,59 +10,72 @@ class StampForm extends React.Component {
         this.handleSubmit = this.handleSubmit.bind(this);
     }
 
+    /*
+    Changes the state to the event target's value.
+
+    @param event Event for changing target value.
+     */
     handleChange(event) {
         this.setState({value: event.target.value});
     }
 
+    /*
+    Sets the response as the data variable's value.
+
+    @param response Response data.
+     */
     showResult(response) {
         this.setState({
             data: response
         });
     }
 
-
-    getDataFromServer(URL){
+    /*
+    Gets data from the server.
+     */
+    getDataFromServer(){
         var frm = $(document.myform);
         var data = getFormData(frm);
+        var now = new Date();
+        now.setMonth( now.getMonth() + 1 );
+        document.cookie = "search="+JSON.stringify(data);
+        document.cookie = "expires="+now.toUTCString();
+        document.cookie = "path=/";
+        window.location.replace("search.html");
 
-        $.ajax({
-            type:"POST",
-            dataType:"json",
-            headers: {
-                'content-type': 'application/json',
-            },
-            url: URL,
-            data: JSON.stringify(data),
-            success: function(response) {
-                this.showResult(response);
-            }.bind(this),
-            error: function(xhr, status, err) {
-                console.error(this.props.url, status, err.toString());
-            }.bind(this)
-        });
     }
 
+    /*
+    Handles submit event.
+
+    @param event Event for clicking submit.
+     */
     handleSubmit(event) {
         event.preventDefault();
-        this.getDataFromServer('http://localhost:8080/itemsSearch');
-        var frm = $(document.myform);
-        var data = getFormData(frm);
+        this.getDataFromServer();
     }
 
+    /*
+    Render the element.
+     */
     render() {
         return (
             <div>
             <form onSubmit={this.handleSubmit} name="myform">
-            <br/>
-            <input type="text" name="tags" placeholder="Press enter to search..."></input>
+           
+            <input id="app2" type="text" name="tags" placeholder="Search items..."></input>
             </form>
 
-            <Result result={this.state.data}/>
     </div>
     );
     }
 }
 
+/*
+ Creates JavaScript array of objects ready to be encoded as a JSON string.
+
+ @param $form Form element.
+ */
 function getFormData($form){
     var unindexed_array = $form.serializeArray();
     var indexed_array = {};
@@ -71,43 +87,10 @@ function getFormData($form){
     return indexed_array;
 }
 
-
-var Result = React.createClass({
-    render:function(){
-        var result = this.props.result.map(function(result,index){
-            return <ResultItem key={index} user={ result } />
-        });
-        return(
-            <div className="container">
-            <div className="row">
-            {result}
-            </div>
-            </div>
-        );
-    }
-});
-
-var ResultItem = React.createClass({
-    render:function(){
-        var camper = this.props.user;
-        if (camper.name){
-            return(
-                <div className="col-xs-6 col-sm-4 col-md-3">
-                <div className="item">
-                <div className="col-xs-12"><h3>{camper.name}</h3></div>
-            <div className="col-xs-12"><img src={camper.picture} /></div>
-            <div className="col-xs-12"><p>Hinta:&nbsp;{camper.price}</p></div>
-            <div className="col-xs-12"><p>Paino:&nbsp;{camper.weight}</p></div>
-            </div>
-            </div>
-        );
-        }else{
-            return <div></div>
-        }
-    }
-});
-
+/*
+ Renders content and attaches it to an element with an id of search.
+ */
 ReactDOM.render(
-<StampForm/>,
-    document.getElementById('app2')
+<SearchForm/>,
+    document.getElementById('search')
 );
