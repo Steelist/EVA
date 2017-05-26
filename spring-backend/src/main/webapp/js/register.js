@@ -1,3 +1,6 @@
+/*
+Handles the submit and value changes.
+ */
 class RegisterForm extends React.Component {
     constructor(props) {
         super(props);
@@ -7,10 +10,20 @@ class RegisterForm extends React.Component {
         this.handleSubmit = this.handleSubmit.bind(this);
     }
 
+    /*
+    Sets the state to the state of the event target's value.
+
+    @param event Event for changing the target value.
+     */
     handleChange(event) {
         this.setState({value: event.target.value});
     }
 
+    /*
+    Handles submit click event.
+
+    @param event Event for clicking submit button.
+     */
     handleSubmit(event) {
         event.preventDefault();
         var frm = $(document.myform);
@@ -35,6 +48,9 @@ class RegisterForm extends React.Component {
         });
     }
 
+    /*
+    Renders the element.
+     */
     render() {
         return (
             <form onSubmit={this.handleSubmit} name="myform">
@@ -55,6 +71,11 @@ class RegisterForm extends React.Component {
     }
 }
 
+/*
+ Creates JavaScript array of objects ready to be encoded as a JSON string.
+
+ @param $form Form element.
+ */
 function getFormData($form){
     var unindexed_array = $form.serializeArray();
     var indexed_array = {};
@@ -66,6 +87,9 @@ function getFormData($form){
     return indexed_array;
 }
 
+/*
+ Renders view adding to element by the id of register.
+ */
 ReactDOM.render(
 <RegisterForm/>,
     document.getElementById('register')

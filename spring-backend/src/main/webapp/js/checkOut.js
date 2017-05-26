@@ -1,3 +1,8 @@
+/*
+ Gets the name in the cookie.
+
+ @param cname Cookie's name.
+ */
 function getCookie(cname) {
     var name = cname + "=";
     var decodedCookie = decodeURIComponent(document.cookie);
@@ -14,15 +19,28 @@ function getCookie(cname) {
     return "";
 }
 
+/*
+Handles the checkouts.
+ */
 class CheckButton extends React.Component{
     constructor(props) {
         super(props);
         this.checkout = this.checkout.bind(this);
         this.checked = this.checked.bind(this);
     }
+
+    /*
+    Calls the data fetching method with the correct url.
+     */
     checked(){
         this.getDataFromServer('http://localhost:8080/checkOutItems/'+getCookie("cart"));
     }
+
+    /*
+    Gets the needed data.
+
+    @param URL Url for getting the data from.
+     */
     getDataFromServer(URL){
         $.ajax({
             type:"GET",
@@ -33,6 +51,11 @@ class CheckButton extends React.Component{
         });
     }
 
+    /*
+    Checks out a cart.
+
+    @param event Event for clicking checkout button.
+     */
     checkout(event){
         event.preventDefault();
         this.checked();
@@ -44,6 +67,10 @@ class CheckButton extends React.Component{
         alert("Thank you for your purchase! Your items will be on their way as soon as possible.")
         location.reload();
     }
+
+    /*
+    Renders the element.
+     */
     render(){
         return(
             <div>
@@ -53,4 +80,7 @@ class CheckButton extends React.Component{
     }
 }
 
+/*
+ Renders content and attaches it to an element with an id of checkout.
+ */
 ReactDOM.render(<CheckButton />, document.getElementById('checkout'));

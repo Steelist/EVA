@@ -1,3 +1,6 @@
+/*
+ Creates the Console form.
+ */
 class ConsoleForm extends React.Component {
     constructor(props) {
         super(props);
@@ -7,10 +10,20 @@ class ConsoleForm extends React.Component {
         this.handleSubmit = this.handleSubmit.bind(this);
     }
 
+    /*
+     Sets current state to match the event target's value.
+
+     @param event Event of changing form data.
+     */
     handleChange(event) {
         this.setState({value: event.target.value});
     }
 
+    /*
+     Handles the event of submitting the inserted data by sending a post request with stringified form data.
+
+     @param event Event of clicking submit button.
+     */
     handleSubmit(event) {
         alert('A console was submitted: ');
         event.preventDefault();
@@ -28,6 +41,9 @@ class ConsoleForm extends React.Component {
 
     }
 
+    /*
+     Renders the form.
+     */
     render() {
         return (
             <form onSubmit={this.handleSubmit} name="myform">
@@ -58,6 +74,11 @@ class ConsoleForm extends React.Component {
     }
 }
 
+/*
+ Creates JavaScript array of objects ready to be encoded as a JSON string.
+
+ @param $form Form element.
+ */
 function getFormData($form){
     var unindexed_array = $form.serializeArray();
     var indexed_array = {};
@@ -69,6 +90,9 @@ function getFormData($form){
     return indexed_array;
 }
 
+/*
+ Renders form and attaches it to an element with an id of root.
+ */
 ReactDOM.render(
 <ConsoleForm/>,
     document.getElementById('root')

@@ -1,3 +1,6 @@
+/*
+Returns the finished product.
+ */
 var MainBox  = React.createClass({
     render:function(){
         return(
@@ -6,6 +9,11 @@ var MainBox  = React.createClass({
     }
 });
 
+/*
+Gets the name in the cookie.
+
+@param cname Cookie's name.
+ */
 function getCookie(cname) {
     var name = cname + "=";
     var decodedCookie = decodeURIComponent(document.cookie);
@@ -22,23 +30,41 @@ function getCookie(cname) {
     return "";
 }
 
+/*
+Gets cart items.
+ */
 var App = React.createClass({
-    //setting up initial state
+    /*
+    Setting up initial state
+     */
     getInitialState:function(){
         return{
             data:[]
         };
     },
+
+    /*
+     Gets invoked immediately after a component is mounted. One of the component's lifecycle methods.
+     */
     componentDidMount(){
         this.getDataFromServer('http://localhost:8080/showShoppingCartWithItems/'+getCookie("cart").substring(1));
     },
-    //showResult Method
+
+    /*
+    Method to show results.
+
+    @param response The cart items.
+     */
     showResult: function(response) {
         this.setState({
             data: response
         });
     },
-    //making ajax call to get data from server
+    /*
+    Making ajax call to get data from server.
+
+    @param URL Url for getting cart items.
+     */
     getDataFromServer:function(URL){
         if(getCookie("cart").substring(0,1)===","){
             $.ajax({
@@ -65,6 +91,9 @@ var App = React.createClass({
     }
 });
 
+/*
+Wraps the result item.
+ */
 var Result = React.createClass({
     render:function(){
         var result = this.props.result.map(function(result,index){
@@ -81,6 +110,10 @@ var Result = React.createClass({
         );
     }
 });
+
+/*
+Handles events and renders the item.
+ */
 class ResultItem extends React.Component{
     constructor(props){
         super(props);
@@ -88,6 +121,11 @@ class ResultItem extends React.Component{
         this.handleClick = this.handleClick.bind(this);
     }
 
+    /*
+    Shows clicked item.
+
+    @param event Event of clicking the item title.
+     */
     handleClick(event){
         var now = new Date();
         now.setMonth( now.getMonth() + 1 );
@@ -96,6 +134,12 @@ class ResultItem extends React.Component{
         document.cookie = "path=/";
         window.location.replace("showitem.html");
     }
+
+    /*
+    Removes an item from the cart and reloads view.
+
+    @param event Event of clicking remove button.
+     */
     removeFromCart(event){
         event.preventDefault();
         var x = getCookie("cart");
@@ -111,6 +155,9 @@ class ResultItem extends React.Component{
 
     }
 
+    /*
+    Renders the element.
+     */
     render(){
         var camper = this.props.user;
         var link = "http://localhost:8080/items/"+camper.id;
@@ -143,4 +190,7 @@ class ResultItem extends React.Component{
     }
 }
 
+/*
+ Renders content and attaches it to an element with an id of app.
+ */
 ReactDOM.render(<MainBox />, document.getElementById('app'));

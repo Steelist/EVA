@@ -1,3 +1,9 @@
+/*
+Creates the alert template element for an added product.
+
+@param msg
+@param duration
+ */
 function customAlert(msg,duration)
 {
  var styler = document.createElement("div");
@@ -9,7 +15,11 @@ function customAlert(msg,duration)
  },duration);
  document.getElementById("alert").appendChild(styler);
 }
-  function caller()
-  {
-    customAlert("Product added to shopping cart","2000");
-  }
+
+/*
+Gets called when the alert is needed and adds the content.
+ */
+function caller()
+{
+customAlert("Product added to shopping cart","2000");
+}
