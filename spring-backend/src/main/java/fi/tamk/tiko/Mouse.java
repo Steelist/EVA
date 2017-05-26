@@ -23,6 +23,7 @@ public class Mouse extends ShoppingItem {
 
     /**
      * Empty constructor.
+     * 
      */
     public Mouse() {
 
