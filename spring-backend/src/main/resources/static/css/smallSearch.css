@@ -1,8 +1,9 @@
-input[type=text] {
+#app2{
     width: 500px;
     box-sizing: border-box;
     margin: 0 auto;
     display:block;
+    margin-bottom: 10px;
     border: 2px solid #ccc;
     border-radius: 4px;
     font-size: 16px;
