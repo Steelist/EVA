@@ -48,7 +48,7 @@ public class MyController {
     /**
      * Gets the URL for the home page.
      *
-     * @param model
+     * @param model map model
      * @return the URL for the home page.
      */
     @RequestMapping({"/", "/home"})
@@ -57,9 +57,9 @@ public class MyController {
     }
 
     /**
+     * Save item to the database
      *
-     *
-     * @param c
+     * @param c item that is saved to the database
      */
     @CrossOrigin(origins = "*")
     @RequestMapping(value = "/items", method = RequestMethod.POST)
